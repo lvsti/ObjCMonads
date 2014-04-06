@@ -25,25 +25,25 @@ Tuple* RunState(State* m, TState state) {
 
 State* Get() {
     return MkState(^Tuple*(TState state) {
-        return [[Tuple alloc] initWithObjectsFromArray:@[state, state]];
+        return MkPair(state, state);
     });
 }
 
 State* Put(id newState) {
     return MkState(^Tuple*(TState state) {
-        return [[Tuple alloc] initWithObjectsFromArray:@[[NSNull null], newState]];
+        return MkPair(MkUnit(), newState);
     });
 }
 
 State* Modify(StateModifier mod) {
     return MkState(^Tuple*(TState state) {
-        return [[Tuple alloc] initWithObjectsFromArray:@[[NSNull null], mod(state)]];
+        return MkPair(MkUnit(), mod(state));
     });
 }
 
 State* GetS(StateSelector sel) {
     return MkState(^Tuple*(TState state) {
-        return [[Tuple alloc] initWithObjectsFromArray:@[sel(state), state]];
+        return MkPair(sel(state), state);
     });
 }
 
@@ -70,7 +70,7 @@ State* GetS(StateSelector sel) {
             Tuple* pair = RunState(ftor, state0);
             id a = pair[0];
             TState state1 = pair[1];
-            return [[Tuple alloc] initWithObjectsFromArray:@[map(a), state1]];
+            return MkPair(map(a), state1);
         });
     };
 }
@@ -94,7 +94,7 @@ State* GetS(StateSelector sel) {
 + (MonadicValue(^)(id))unit {
     return ^State*(id value) {
         return MkState(^Tuple*(TState state) {
-            return [[Tuple alloc] initWithObjectsFromArray:@[value, state]];
+            return MkPair(value, state);
         });
     };
 }

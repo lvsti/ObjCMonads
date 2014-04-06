@@ -14,7 +14,7 @@
 Record MkRecord(Result result, Output output) {
     assert(result);
     assert(output);
-    return [[Tuple alloc] initWithObjectsFromArray:@[result, output]];
+    return MkPair(result, output);
 }
 
 

@@ -8,12 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Tuple : NSObject
+
+@interface Tuple : NSObject<NSCopying>
 
 @property (nonatomic, assign, readonly) int size;
 
-+ (instancetype)empty;
 - (instancetype)initWithObjectsFromArray:(NSArray*)array;
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
 
 @end
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+    
+    Tuple* MkUnit();
+    Tuple* MkPair(id a, id b);
+    
+#ifdef __cplusplus
+}
+#endif

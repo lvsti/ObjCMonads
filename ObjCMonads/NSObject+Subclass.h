@@ -17,7 +17,8 @@ typedef struct SelBlockPair { SEL aSEL; id (^__unsafe_unretained aBlock)(id, ...
 
 + (Class)newSubclassNamed:(NSString*)name
                 protocols:(Protocol**)protos
-                    impls:(SelBlockPair*)impls;
+            instanceImpls:(SelBlockPair*)instanceImpls
+               classImpls:(SelBlockPair*)classImpls;
 
 @end
 

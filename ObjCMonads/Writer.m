@@ -28,16 +28,18 @@ Record MkRecord(Result result, Output output) {
 
 
 Writer* MkWriter(Record rec) {
-    Class outputClass = [rec[1] class];
+    Class class = [rec[1] class];
     struct SelBlockPair impls[] = {
-        { @selector(outputClass), BLOCK_CAST ^id(id self) { return outputClass; } },
+        { @selector(outputClass), BLOCK_CAST ^id(id self) { return class; } },
         { 0, 0 }
     };
     
-    NSString* className = [NSString stringWithFormat:@"Writer_%@", NSStringFromClass(outputClass)];
+    NSString* className = [NSString stringWithFormat:@"Writer_%@",
+                           NSStringFromClass(class)];
     __strong Class newClass = [Writer newSubclassNamed:className
                                              protocols:NULL
-                                                 impls:impls];
+                                         instanceImpls:NULL
+                                            classImpls:impls];
     
     return [[newClass alloc] initWithRecord:rec];
 }
@@ -90,11 +92,15 @@ Writer* Censor(OutputModifier mod, Writer* m) {
 }
 
 + (Class)outputClass {
+    assert(NO);
     return nil;
 }
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"Writer (%@, %@)", self.record[0], self.record[1]];
+    return [NSString stringWithFormat:@"%@ (%@, %@)",
+            NSStringFromClass([self class]),
+            self.record[0],
+            self.record[1]];
 }
 
 #pragma mark - Functor:
@@ -120,7 +126,7 @@ Writer* Censor(OutputModifier mod, Writer* m) {
 + (MonadicValue(^)(id))unit {
     Class class = [self outputClass];
     return ^Writer*(id value) {
-        return MkWriter(MkRecord(value, [class mempty]));
+        return MkWriter(MkRecord(value, [class mempty]()));
     };
 }
 

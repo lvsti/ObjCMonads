@@ -7,7 +7,7 @@
 //
 
 #import "State.h"
-#import "EXTScope.h"
+
 
 @interface State ()
 @property (nonatomic, copy, readwrite) Transition transition;
@@ -77,22 +77,6 @@ State* GetS(StateSelector sel) {
 
 #pragma mark - Monad:
 
-//- (MonadicValue(^)(Continuation))bind {
-//    @weakify(self);
-//    return ^MonadicValue(Continuation cont) {
-//        @strongify(self);
-//        return [State bind](self, cont);
-//    };
-//}
-//
-//- (MonadicValue(^)(MonadicValue))bind_ {
-//    @weakify(self);
-//    return ^MonadicValue(MonadicValue mvalue) {
-//        @strongify(self);
-//        return [State bind_](self, mvalue);
-//    };
-//}
-
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^MonadicValue(State* mvalue, Continuation cont) {
         return MkState(^Tuple*(TState state0) {
@@ -106,12 +90,6 @@ State* GetS(StateSelector sel) {
         });
     };
 }
-
-//+ (MonadicValue(^)(MonadicValue, MonadicValue))bind_ {
-//    return ^State*(State* mvalue0, MonadicValue mvalue1) {
-//        return [State bind](mvalue0, ^MonadicValue(id x) { return mvalue1; });
-//    };
-//}
 
 + (MonadicValue(^)(id))unit {
     return ^State*(id value) {

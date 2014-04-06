@@ -7,7 +7,6 @@
 //
 
 #import "Maybe.h"
-//#import "EXTScope.h"
 
 
 @interface Maybe ()
@@ -68,6 +67,10 @@ id FromJust(Maybe* m) {
     return _value;
 }
 
+- (NSString*)description {
+    return _isJust? [NSString stringWithFormat:@"Just %@", _value]: @"Nothing";
+}
+
 #pragma mark - Functor:
 
 + (id<Functor>(^)(Mapping, id<Functor>))fmap {
@@ -77,22 +80,6 @@ id FromJust(Maybe* m) {
 }
 
 #pragma mark - Monad:
-
-//- (MonadicValue(^)(Continuation))bind {
-//    @weakify(self);
-//    return ^MonadicValue(Continuation cont) {
-//        @strongify(self);
-//        return [Maybe bind](self, cont);
-//    };
-//}
-//
-//- (MonadicValue(^)(MonadicValue))bind_ {
-//    @weakify(self);
-//    return ^MonadicValue(MonadicValue mvalue) {
-//        @strongify(self);
-//        return [Maybe bind_](self, mvalue);
-//    };
-//}
 
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^MonadicValue(Maybe* mvalue, Continuation cont) {
@@ -105,21 +92,10 @@ id FromJust(Maybe* m) {
     };
 }
 
-//+ (MonadicValue(^)(MonadicValue, MonadicValue))bind_ {
-//    return ^MonadicValue(Maybe* mvalue0, MonadicValue mvalue1) {
-//        return [Maybe bind](mvalue0, ^MonadicValue(id x) { return mvalue1; });
-//    };
-//}
-
 + (MonadicValue(^)(id))unit {
     return ^Maybe*(id value) {
         return Just(value);
     };
-}
-
-
-- (NSString*)description {
-    return _isJust? [NSString stringWithFormat:@"Just %@", _value]: @"Nothing";
 }
 
 @end

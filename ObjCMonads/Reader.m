@@ -7,7 +7,6 @@
 //
 
 #import "Reader.h"
-//#import "EXTScope.h"
 
 
 @interface Reader ()
@@ -71,22 +70,6 @@ Reader* Local(EnvironmentModifier mod, Reader* m) {
 
 #pragma mark - Monad:
 
-//- (MonadicValue(^)(Continuation))bind {
-//    @weakify(self);
-//    return ^MonadicValue(Continuation cont) {
-//        @strongify(self);
-//        return [Reader bind](self, cont);
-//    };
-//}
-//
-//- (MonadicValue(^)(MonadicValue))bind_ {
-//    @weakify(self);
-//    return ^MonadicValue(MonadicValue mvalue) {
-//        @strongify(self);
-//        return [Reader bind_](self, mvalue);
-//    };
-//}
-
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^Reader*(Reader* mvalue, Continuation cont) {
         return MkReader(^id(Environment env) {
@@ -94,12 +77,6 @@ Reader* Local(EnvironmentModifier mod, Reader* m) {
         });
     };
 }
-
-//+ (MonadicValue(^)(MonadicValue, MonadicValue))bind_ {
-//    return ^Reader*(Reader* mvalue0, MonadicValue mvalue1) {
-//        return [Reader bind](mvalue0, ^MonadicValue(id x) { return mvalue1; });
-//    };
-//}
 
 + (MonadicValue(^)(id))unit {
     return ^Reader*(id value) {

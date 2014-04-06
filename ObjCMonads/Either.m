@@ -7,7 +7,6 @@
 //
 
 #import "Either.h"
-#import "EXTScope.h"
 
 
 @interface Either ()
@@ -76,6 +75,10 @@ id FromRight(Either* e) {
     return _right;
 }
 
+- (NSString*)description {
+    return _isLeft? [NSString stringWithFormat:@"Left %@", _left]: [NSString stringWithFormat:@"Right %@", _right];
+}
+
 #pragma mark - Functor:
 
 + (id<Functor>(^)(Mapping, id<Functor>))fmap {
@@ -85,22 +88,6 @@ id FromRight(Either* e) {
 }
 
 #pragma mark - Monad:
-
-//- (MonadicValue(^)(Continuation))bind {
-//    @weakify(self);
-//    return ^MonadicValue(Continuation cont) {
-//        @strongify(self);
-//        return [Either bind](self, cont);
-//    };
-//}
-//
-//- (MonadicValue(^)(MonadicValue))bind_ {
-//    @weakify(self);
-//    return ^MonadicValue(MonadicValue mvalue) {
-//        @strongify(self);
-//        return [Either bind_](self, mvalue);
-//    };
-//}
 
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^MonadicValue(Either* mvalue, Continuation cont) {
@@ -113,23 +100,11 @@ id FromRight(Either* e) {
     };
 }
 
-//+ (MonadicValue(^)(MonadicValue, MonadicValue))bind_ {
-//    return ^MonadicValue(Either* mvalue0, MonadicValue mvalue1) {
-//        return [Either bind](mvalue0, ^MonadicValue(id x) { return mvalue1; });
-//    };
-//}
-
 + (MonadicValue(^)(id))unit {
     return ^Either*(id value) {
         return Right(value);
     };
 }
-
-
-- (NSString*)description {
-    return _isLeft? [NSString stringWithFormat:@"Left %@", _left]: [NSString stringWithFormat:@"Right %@", _right];
-}
-
 
 @end
 

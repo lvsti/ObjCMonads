@@ -93,6 +93,10 @@ Writer* Censor(OutputModifier mod, Writer* m) {
     return nil;
 }
 
+- (NSString*)description {
+    return [NSString stringWithFormat:@"Writer (%@, %@)", self.record[0], self.record[1]];
+}
+
 #pragma mark - Functor:
 
 + (id<Functor>(^)(Mapping, id<Functor>))fmap {
@@ -101,24 +105,7 @@ Writer* Censor(OutputModifier mod, Writer* m) {
     };
 }
 
-
 #pragma mark - Monad:
-
-//- (MonadicValue(^)(Continuation))bind {
-//    @weakify(self);
-//    return ^MonadicValue(Continuation cont) {
-//        @strongify(self);
-//        return [Writer bind](self, cont);
-//    };
-//}
-//
-//- (MonadicValue(^)(MonadicValue))bind_ {
-//    @weakify(self);
-//    return ^MonadicValue(MonadicValue mvalue) {
-//        @strongify(self);
-//        return [Writer bind_](self, mvalue);
-//    };
-//}
 
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^Writer*(Writer* mvalue, Continuation cont) {
@@ -130,21 +117,11 @@ Writer* Censor(OutputModifier mod, Writer* m) {
     };
 }
 
-//+ (MonadicValue(^)(MonadicValue, MonadicValue))bind_ {
-//    return ^Writer*(Writer* mvalue0, MonadicValue mvalue1) {
-//        return [Writer bind](mvalue0, ^MonadicValue(id x) { return mvalue1; });
-//    };
-//}
-
 + (MonadicValue(^)(id))unit {
     Class class = [self outputClass];
     return ^Writer*(id value) {
         return MkWriter(MkRecord(value, [class mempty]));
     };
-}
-
-- (NSString*)description {
-    return [NSString stringWithFormat:@"Writer (%@, %@)", self.record[0], self.record[1]];
 }
 
 @end

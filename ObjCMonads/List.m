@@ -9,6 +9,7 @@
 #import "List.h"
 #import "EXTScope.h"
 
+// flipped array (head is at the last index)
 typedef NSArray FArray;
 
 //instance  Monad []  where
@@ -130,6 +131,17 @@ List* Replicate(int count, id item) {
     return self;
 }
 
+- (NSString*)description {
+    NSMutableString* str = [NSMutableString stringWithString:@"["];
+    [self.array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [str appendFormat:@"%@", obj];
+        if (idx > 0) {
+            [str appendString:@","];
+        }
+    }];
+    [str appendString:@"]"];
+    return [str copy];
+}
 
 #pragma mark - Monoid:
 
@@ -169,58 +181,16 @@ List* Replicate(int count, id item) {
 
 #pragma mark - Monad:
 
-//- (MonadicValue(^)(Continuation))bind {
-//    @weakify(self);
-//    return ^MonadicValue(Continuation cont) {
-//        @strongify(self);
-//        return Concat(Map(cont, self));
-//    };
-//}
-//
-//- (MonadicValue(^)(MonadicValue))bind_ {
-//    @weakify(self);
-//    
-//    return ^MonadicValue(MonadicValue mvalue) {
-//        @strongify(self);
-//        Mapping m = ^id(id obj) {
-//            return mvalue;
-//        };
-//        return Concat(Map(m, self));
-//    };
-//}
-
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^List*(List* mvalue, Continuation cont) {
         return Concat(Map(cont, mvalue));
     };
 }
 
-//+ (MonadicValue(^)(MonadicValue, MonadicValue))bind_ {
-//    return ^List*(List* mvalue0, MonadicValue mvalue1) {
-//        Mapping m = ^id(id obj) {
-//            return mvalue1;
-//        };
-//        return Concat(Map(m, mvalue0));
-//    };
-//}
-
 + (MonadicValue(^)(id))unit {
     return ^List*(id value) {
         return Singleton(value);
     };
-}
-
-
-- (NSString*)description {
-    NSMutableString* str = [NSMutableString stringWithString:@"["];
-    [self.array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [str appendFormat:@"%@", obj];
-        if (idx > 0) {
-            [str appendString:@","];
-        }
-    }];
-    [str appendString:@"]"];
-    return [str copy];
 }
 
 @end

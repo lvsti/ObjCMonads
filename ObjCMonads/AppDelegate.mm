@@ -13,6 +13,7 @@
 #import "Writer.h"
 #import "ObjCObject+Monad.h"
 #import "ObjCObject+Monoid.h"
+#import "Pierre.h"
 
 
 Continuation dec(int by) {
@@ -83,6 +84,7 @@ Continuation gen() {
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    Pierre();
     ObjCObject val = ObjCObject(Just(@5)) >=
                     dec(2) >=
                     dec(4) >=

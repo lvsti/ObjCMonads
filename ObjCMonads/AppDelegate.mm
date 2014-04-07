@@ -11,6 +11,8 @@
 #import "Maybe.h"
 #import "State.h"
 #import "Writer.h"
+#import "ObjCObject+Monad.h"
+#import "ObjCObject+Monoid.h"
 
 
 Continuation dec(int by) {
@@ -56,25 +58,6 @@ Continuation gen() {
     };
 }
 
-
-class ObjCObject {
-public:
-    ObjCObject(id obj): _object(obj) {}
-    __strong id _object;
-};
-
-
-ObjCObject operator>=(const ObjCObject& mvalue, const ObjCObject& cont) {
-    NSLog(@"%@ >= ", mvalue._object);
-//    return ((MonadicValue)obj._object).bind(cont._object);
-    return [[mvalue._object class] bind](mvalue._object, cont._object);
-}
-
-ObjCObject operator>(const ObjCObject& mvalue0, const ObjCObject& mvalue1) {
-    NSLog(@"%@ > ", mvalue0._object);
-//    return ((MonadicValue)obj._object).bind_(cont._object);
-    return [[mvalue0._object class] bind_](mvalue0._object, mvalue1._object);
-}
 
 
 //logNumber :: Int -> Writer [String] Int  

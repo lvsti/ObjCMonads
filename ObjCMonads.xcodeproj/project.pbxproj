@@ -24,6 +24,8 @@
 		E83CDB6B18F1BB8200FB7004 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5D18F1BB8200FB7004 /* EXTScope.m */; };
 		E8B6E98618F1E5100026B4ED /* Prelude.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98518F1E5100026B4ED /* Prelude.m */; };
 		E8B6E98B18F327220026B4ED /* Monoid.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98A18F327220026B4ED /* Monoid.m */; };
+		E8B6E99118F337440026B4ED /* ObjCObject+Monad.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E99018F337440026B4ED /* ObjCObject+Monad.mm */; };
+		E8B6E99418F337CE0026B4ED /* ObjCObject+Monoid.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E99318F337CE0026B4ED /* ObjCObject+Monoid.mm */; };
 		E8E18E0418EDF764009E0ECE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E18E0318EDF764009E0ECE /* Cocoa.framework */; };
 		E8E18E0E18EDF765009E0ECE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8E18E0C18EDF765009E0ECE /* InfoPlist.strings */; };
 		E8E18E1018EDF765009E0ECE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E18E0F18EDF765009E0ECE /* main.m */; };
@@ -82,6 +84,11 @@
 		E8B6E98418F1E5100026B4ED /* Prelude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prelude.h; sourceTree = "<group>"; };
 		E8B6E98518F1E5100026B4ED /* Prelude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prelude.m; sourceTree = "<group>"; };
 		E8B6E98A18F327220026B4ED /* Monoid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Monoid.m; path = ObjCMonads/Monoid.m; sourceTree = "<group>"; };
+		E8B6E98F18F336BD0026B4ED /* ObjCObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCObject.h; sourceTree = "<group>"; };
+		E8B6E99018F337440026B4ED /* ObjCObject+Monad.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ObjCObject+Monad.mm"; sourceTree = "<group>"; };
+		E8B6E99218F337CE0026B4ED /* ObjCObject+Monoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjCObject+Monoid.h"; sourceTree = "<group>"; };
+		E8B6E99318F337CE0026B4ED /* ObjCObject+Monoid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ObjCObject+Monoid.mm"; sourceTree = "<group>"; };
+		E8B6E99518F338250026B4ED /* ObjCObject+Monad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjCObject+Monad.h"; sourceTree = "<group>"; };
 		E8E18E0018EDF764009E0ECE /* ObjCMonads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCMonads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E18E0318EDF764009E0ECE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E8E18E0618EDF764009E0ECE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -231,6 +238,11 @@
 				E8E18E1818EDF765009E0ECE /* MainMenu.xib */,
 				E816ED7218F062EB00481229 /* Tuple.h */,
 				E816ED7318F062EB00481229 /* Tuple.m */,
+				E8B6E98F18F336BD0026B4ED /* ObjCObject.h */,
+				E8B6E99518F338250026B4ED /* ObjCObject+Monad.h */,
+				E8B6E99018F337440026B4ED /* ObjCObject+Monad.mm */,
+				E8B6E99218F337CE0026B4ED /* ObjCObject+Monoid.h */,
+				E8B6E99318F337CE0026B4ED /* ObjCObject+Monoid.mm */,
 				E83CDB4118F19F0700FB7004 /* NSObject+Subclass.h */,
 				E83CDB4218F19F0700FB7004 /* NSObject+Subclass.m */,
 				E83CDB4418F1A48300FB7004 /* NSString+Monoid.h */,
@@ -377,6 +389,7 @@
 				E83CDB4318F19F0700FB7004 /* NSObject+Subclass.m in Sources */,
 				E83CDB6718F1BB8200FB7004 /* EXTConcreteProtocol.m in Sources */,
 				E816ED7118F061D700481229 /* State.m in Sources */,
+				E8B6E99418F337CE0026B4ED /* ObjCObject+Monoid.mm in Sources */,
 				E83CDB3F18F1781900FB7004 /* Writer.m in Sources */,
 				E816ED7418F062EB00481229 /* Tuple.m in Sources */,
 				E83CDB3718F1348100FB7004 /* List.m in Sources */,
@@ -385,6 +398,7 @@
 				E83CDB4818F1ADB100FB7004 /* Monad.m in Sources */,
 				E83CDB3B18F14E3700FB7004 /* Reader.m in Sources */,
 				E8B6E98B18F327220026B4ED /* Monoid.m in Sources */,
+				E8B6E99118F337440026B4ED /* ObjCObject+Monad.mm in Sources */,
 				E816ED6E18F05F9F00481229 /* Either.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

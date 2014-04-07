@@ -45,9 +45,9 @@ Tuple* MkPair(id a, id b) {
 
 - (NSString*)description {
     NSMutableString* str = [NSMutableString stringWithString:@"("];
-    [_objects enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [_objects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [str appendFormat:@"%@", obj];
-        if (idx > 0) {
+        if (idx < [_objects count] - 1) {
             [str appendString:@","];
         }
     }];

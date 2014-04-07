@@ -27,6 +27,8 @@ extern "C" {
     
     Tuple* MkUnit();
     Tuple* MkPair(id a, id b);
+    id Fst(Tuple* tuple);
+    id Snd(Tuple* tuple);
     
 #ifdef __cplusplus
 }

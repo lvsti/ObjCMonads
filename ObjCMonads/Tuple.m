@@ -17,6 +17,14 @@ Tuple* MkPair(id a, id b) {
     return [[Tuple alloc] initWithObjectsFromArray:@[a,b]];
 }
 
+id Fst(Tuple* tuple) {
+    return tuple[0];
+}
+
+id Snd(Tuple* tuple) {
+    return tuple[1];
+}
+
 
 @implementation Tuple {
     NSArray* _objects;

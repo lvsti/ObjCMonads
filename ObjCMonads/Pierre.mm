@@ -43,6 +43,19 @@ Maybe(Pole) Banana(Pole pole) {
 }
 
 
+Continuation _LandLeft(Birds n) {
+    return MCONT(LandLeft, n);
+}
+
+Continuation _LandRight(Birds n) {
+    return MCONT(LandRight, n);
+}
+
+Continuation _Banana() {
+    return MCONT(Banana);
+}
+
+
 void Pierre() {
     id result =
         MBEGIN(Just(EmptyPole())) >=
@@ -54,6 +67,35 @@ void Pierre() {
         MCONT(LandLeft, @1) >=
         MCONT(LandLeft, @3)
         MEND;
+    
+    NSLog(@"pierre: %@", result);
+}
+
+
+void Pierre2() {
+    id result =
+        Just(EmptyPole()).
+        bind(MCONT(LandLeft, @1)).
+        bind(MCONT(LandRight, @3)).
+        bind(MCONT(LandLeft, @1)).
+        bind(MCONT(LandRight, @2)).
+        bind(MCONT(Banana)).
+        bind(MCONT(LandLeft, @1)).
+        bind(MCONT(LandLeft, @3));
+    
+    NSLog(@"pierre: %@", result);
+}
+
+void Pierre3() {
+    id result =
+        Just(EmptyPole()).
+        bind(_LandLeft(@1)).
+        bind(_LandRight(@3)).
+        bind(_LandLeft(@1)).
+        bind(_LandRight(@2)).
+        bind(_Banana()).
+        bind(_LandLeft(@1)).
+        bind(_LandLeft(@3));
     
     NSLog(@"pierre: %@", result);
 }

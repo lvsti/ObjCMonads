@@ -7,15 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EXTConcreteProtocol.h"
 
 @class List;
 
 @protocol Monoid <NSObject>
-
-@property (nonatomic, readonly) id<Monoid>(^mappend)(id<Monoid>);
+@required
 
 + (id<Monoid>(^)())mempty;
 + (id<Monoid>(^)(id<Monoid>, id<Monoid>))mappend;
+
+@concrete
+
 + (id<Monoid>(^)(List*))mconcat;
+
+@property (nonatomic, readonly) id<Monoid>(^mappend)(id<Monoid>);
 
 @end

@@ -163,14 +163,6 @@ List* Replicate(int count, id item) {
     };
 }
 
-- (id<Monoid>(^)(id<Monoid>))mappend {
-    @weakify(self);
-    return ^id<Monoid>(List* list) {
-        @strongify(self);
-        return [[self class] mappend](self, list);
-    };
-}
-
 #pragma mark - Functor:
 
 + (id<Functor>(^)(Mapping, id<Functor>))fmap {

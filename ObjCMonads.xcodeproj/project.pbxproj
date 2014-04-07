@@ -23,6 +23,7 @@
 		E83CDB6918F1BB8200FB7004 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5918F1BB8200FB7004 /* EXTRuntimeExtensions.m */; };
 		E83CDB6B18F1BB8200FB7004 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5D18F1BB8200FB7004 /* EXTScope.m */; };
 		E8B6E98618F1E5100026B4ED /* Prelude.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98518F1E5100026B4ED /* Prelude.m */; };
+		E8B6E98B18F327220026B4ED /* Monoid.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98A18F327220026B4ED /* Monoid.m */; };
 		E8E18E0418EDF764009E0ECE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E18E0318EDF764009E0ECE /* Cocoa.framework */; };
 		E8E18E0E18EDF765009E0ECE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8E18E0C18EDF765009E0ECE /* InfoPlist.strings */; };
 		E8E18E1018EDF765009E0ECE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E18E0F18EDF765009E0ECE /* main.m */; };
@@ -80,6 +81,7 @@
 		E83CDB6118F1BB8200FB7004 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		E8B6E98418F1E5100026B4ED /* Prelude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prelude.h; sourceTree = "<group>"; };
 		E8B6E98518F1E5100026B4ED /* Prelude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prelude.m; sourceTree = "<group>"; };
+		E8B6E98A18F327220026B4ED /* Monoid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Monoid.m; path = ObjCMonads/Monoid.m; sourceTree = "<group>"; };
 		E8E18E0018EDF764009E0ECE /* ObjCMonads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCMonads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E18E0318EDF764009E0ECE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E8E18E0618EDF764009E0ECE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -135,6 +137,7 @@
 				E816ED6818F05D6300481229 /* Monad.h */,
 				E83CDB4718F1ADB100FB7004 /* Monad.m */,
 				E83CDB4018F17F0100FB7004 /* Monoid.h */,
+				E8B6E98A18F327220026B4ED /* Monoid.m */,
 				E83CDB3918F14E3700FB7004 /* Reader.h */,
 				E83CDB3A18F14E3700FB7004 /* Reader.m */,
 				E816ED6F18F061D700481229 /* State.h */,
@@ -381,6 +384,7 @@
 				E83CDB4618F1A48300FB7004 /* NSString+Monoid.m in Sources */,
 				E83CDB4818F1ADB100FB7004 /* Monad.m in Sources */,
 				E83CDB3B18F14E3700FB7004 /* Reader.m in Sources */,
+				E8B6E98B18F327220026B4ED /* Monoid.m in Sources */,
 				E816ED6E18F05F9F00481229 /* Either.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

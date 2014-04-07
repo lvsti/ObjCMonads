@@ -10,8 +10,12 @@
 
 
 @interface State ()
+
+// transition :: s -> (a, s)
 @property (nonatomic, copy, readwrite) Transition transition;
+
 - (instancetype)initWithTransition:(Transition)trans;
+
 @end
 
 

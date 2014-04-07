@@ -127,7 +127,7 @@ List* Replicate(int count, id item) {
     return self;
 }
 
-- (id)copyWithZone:(NSZone *)zone {
+- (id)copyWithZone:(NSZone*)zone {
     return self;
 }
 

@@ -15,7 +15,7 @@ typedef id(^EnvironmentSelector)(Environment);
 typedef Environment(^EnvironmentModifier)(Environment);
 typedef id(^Computation)(Environment);
 
-@interface Reader : NSObject<Monad, Functor>
+@interface Reader : NSObject<Monad, Functor, NSCopying>
 
 @end
 

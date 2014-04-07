@@ -14,7 +14,7 @@
 typedef id(^ReduceStepL)(id accum, id obj);
 typedef id(^ReduceStepR)(id obj, id accum);
 
-@interface List : NSObject<Monad, Functor, Monoid>
+@interface List : NSObject<Monad, Functor, Monoid, NSCopying>
 
 - (instancetype)initWithArray:(NSArray*)array;
 

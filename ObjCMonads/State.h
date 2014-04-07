@@ -16,10 +16,7 @@ typedef Tuple*(^Transition)(TState);
 typedef TState(^StateModifier)(TState);
 typedef id(^StateSelector)(TState);
 
-@interface State : NSObject<Monad, Functor>
-
-// transition :: s -> (a, s)
-@property (nonatomic, copy, readonly) Transition transition;
+@interface State : NSObject<Monad, Functor, NSCopying>
 
 @end
 

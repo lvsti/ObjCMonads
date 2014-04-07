@@ -10,7 +10,7 @@
 #import "Functor.h"
 #import "Monad.h"
 
-@interface Maybe : NSObject<Monad, Functor>
+@interface Maybe : NSObject<Monad, Functor, NSCopying>
 
 @end
 

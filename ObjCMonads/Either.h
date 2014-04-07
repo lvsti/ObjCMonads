@@ -10,7 +10,7 @@
 #import "Functor.h"
 #import "Monad.h"
 
-@interface Either : NSObject<Monad, Functor>
+@interface Either : NSObject<Monad, Functor, NSCopying>
 
 @end
 

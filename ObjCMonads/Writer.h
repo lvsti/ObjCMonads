@@ -18,7 +18,7 @@ typedef Tuple* Record; // (Result, Output)
 typedef id(^OutputSelector)(Output);
 typedef Output(^OutputModifier)(Output);
 
-@interface Writer : NSObject<Monad, Functor>
+@interface Writer : NSObject<Monad, Functor, NSCopying>
 
 @end
 

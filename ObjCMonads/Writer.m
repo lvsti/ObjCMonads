@@ -7,7 +7,6 @@
 //
 
 #import "Writer.h"
-//#import "EXTScope.h"
 #import "NSObject+Subclass.h"
 
 

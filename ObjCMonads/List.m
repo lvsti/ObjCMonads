@@ -8,6 +8,7 @@
 
 #import "List.h"
 #import "EXTScope.h"
+#undef List
 
 // flipped array (head is at the last index)
 typedef NSArray FArray;

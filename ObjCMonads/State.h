@@ -16,6 +16,9 @@ typedef Tuple*(^Transition)(TState);
 typedef TState(^StateModifier)(TState);
 typedef id(^StateSelector)(TState);
 
+#define State(s, a) State*
+
+
 @interface State : NSObject<Monad, Functor, NSCopying>
 
 @end

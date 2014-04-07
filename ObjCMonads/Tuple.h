@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define Pair(fst_type, snd_type)    Tuple*
+
 
 @interface Tuple : NSObject<NSCopying>
 

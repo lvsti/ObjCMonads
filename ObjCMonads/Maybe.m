@@ -7,6 +7,7 @@
 //
 
 #import "Maybe.h"
+#undef Maybe
 
 
 @interface Maybe ()

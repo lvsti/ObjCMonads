@@ -7,7 +7,7 @@
 //
 
 #import "State.h"
-
+#undef State
 
 @interface State ()
 

@@ -8,7 +8,7 @@
 
 #import "Writer.h"
 #import "NSObject+Subclass.h"
-
+#undef Writer
 
 Record MkRecord(Result result, Output output) {
     assert(result);

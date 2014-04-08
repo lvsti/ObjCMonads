@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Functor.h"
 #import "Monad.h"
+#import "MonadPlus.h"
 #import "Monoid.h"
 
 typedef id(^ReduceStepL)(id accum, id obj);
@@ -17,7 +18,7 @@ typedef id(^ReduceStepR)(id obj, id accum);
 #define List(a) List*
 
 
-@interface List : NSObject<Monad, Functor, Monoid, NSCopying>
+@interface List : NSObject<Monad, Functor, Monoid, MonadPlus, NSCopying>
 
 - (instancetype)initWithArray:(NSArray*)array;
 

@@ -27,6 +27,7 @@
 		E8B6E98E18F3316C0026B4ED /* Pierre.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98D18F3316C0026B4ED /* Pierre.mm */; };
 		E8B6E99118F337440026B4ED /* ObjCObject+Monad.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E99018F337440026B4ED /* ObjCObject+Monad.mm */; };
 		E8B6E99418F337CE0026B4ED /* ObjCObject+Monoid.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E99318F337CE0026B4ED /* ObjCObject+Monoid.mm */; };
+		E8B6E99818F495A70026B4ED /* AKnightsQuest.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E99718F495A70026B4ED /* AKnightsQuest.mm */; };
 		E8E18E0418EDF764009E0ECE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E18E0318EDF764009E0ECE /* Cocoa.framework */; };
 		E8E18E0E18EDF765009E0ECE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8E18E0C18EDF765009E0ECE /* InfoPlist.strings */; };
 		E8E18E1018EDF765009E0ECE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E18E0F18EDF765009E0ECE /* main.m */; };
@@ -92,6 +93,8 @@
 		E8B6E99218F337CE0026B4ED /* ObjCObject+Monoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ObjCObject+Monoid.h"; sourceTree = "<group>"; };
 		E8B6E99318F337CE0026B4ED /* ObjCObject+Monoid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "ObjCObject+Monoid.mm"; sourceTree = "<group>"; };
 		E8B6E99518F338250026B4ED /* ObjCObject+Monad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjCObject+Monad.h"; sourceTree = "<group>"; };
+		E8B6E99618F495A70026B4ED /* AKnightsQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKnightsQuest.h; sourceTree = "<group>"; };
+		E8B6E99718F495A70026B4ED /* AKnightsQuest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AKnightsQuest.mm; sourceTree = "<group>"; };
 		E8B6E99918F498F10026B4ED /* MonadPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MonadPlus.h; path = ObjCMonads/MonadPlus.h; sourceTree = "<group>"; };
 		E8E18E0018EDF764009E0ECE /* ObjCMonads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCMonads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E18E0318EDF764009E0ECE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -256,6 +259,8 @@
 				E8B6E98518F1E5100026B4ED /* Prelude.m */,
 				E8B6E98C18F3316C0026B4ED /* Pierre.h */,
 				E8B6E98D18F3316C0026B4ED /* Pierre.mm */,
+				E8B6E99618F495A70026B4ED /* AKnightsQuest.h */,
+				E8B6E99718F495A70026B4ED /* AKnightsQuest.mm */,
 			);
 			path = ObjCMonads;
 			sourceTree = "<group>";
@@ -389,6 +394,7 @@
 				E83CDB6B18F1BB8200FB7004 /* EXTScope.m in Sources */,
 				E816ED6B18F05D8500481229 /* Maybe.m in Sources */,
 				E83CDB4A18F1B5C600FB7004 /* Functor.m in Sources */,
+				E8B6E99818F495A70026B4ED /* AKnightsQuest.mm in Sources */,
 				E8B6E98618F1E5100026B4ED /* Prelude.m in Sources */,
 				E8E18E1718EDF765009E0ECE /* AppDelegate.mm in Sources */,
 				E83CDB6918F1BB8200FB7004 /* EXTRuntimeExtensions.m in Sources */,

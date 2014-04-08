@@ -9,6 +9,10 @@
 #import "Tuple.h"
 
 
+@interface Tuple ()
+@property (nonatomic, copy, readwrite) NSArray* objects;
+@end
+
 Tuple* MkUnit() {
     return [[Tuple alloc] initWithObjectsFromArray:@[]];
 }
@@ -26,9 +30,7 @@ id Snd(Tuple* tuple) {
 }
 
 
-@implementation Tuple {
-    NSArray* _objects;
-}
+@implementation Tuple
 
 - (instancetype)initWithObjectsFromArray:(NSArray*)array {
     assert(array);
@@ -49,6 +51,22 @@ id Snd(Tuple* tuple) {
 
 - (id)copyWithZone:(NSZone*)zone {
     return self;
+}
+
+- (BOOL)isEqual:(id)other {
+    if (self == other) {
+        return YES;
+    }
+    
+    if (!other) {
+        return NO;
+    }
+    
+    if ([self class] != [other class]) {
+        return NO;
+    }
+    
+    return [self.objects isEqualToArray:((Tuple*)other).objects];
 }
 
 - (NSString*)description {

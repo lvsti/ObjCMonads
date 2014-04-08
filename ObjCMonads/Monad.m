@@ -23,7 +23,7 @@
 
 + (MonadicValue(^)(MonadicValue, MonadicValue))bind_ {
     return ^MonadicValue(MonadicValue mvalue0, MonadicValue mvalue1) {
-        return [self bind](mvalue0, ^MonadicValue(id x) { return mvalue1; });
+        return [self bind](mvalue0, ^MonadicValue(id x, Class m) { return mvalue1; });
     };
 }
 
@@ -39,7 +39,7 @@
     @weakify(self);
     return ^MonadicValue(MonadicValue mvalue) {
         @strongify(self);
-        return [[self class] bind](self, ^MonadicValue(id x) { return mvalue; });
+        return [[self class] bind](self, ^MonadicValue(id x, Class m) { return mvalue; });
     };
 }
 

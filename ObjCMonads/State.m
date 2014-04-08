@@ -90,7 +90,7 @@ State* GetS(StateSelector sel) {
             Tuple* pair = RunState(mvalue, state0);
             id a = pair[0];
             TState state1 = pair[1];
-            return RunState((State*)cont(a), state1);
+            return RunState((State*)cont(a, self), state1);
         });
     };
 }

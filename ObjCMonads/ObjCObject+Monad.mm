@@ -16,7 +16,7 @@ ObjCObject operator>=(const ObjCObject& mvalue, const ObjCObject& cont) {
 }
 
 ObjCObject operator>=(const ObjCObject& mvalue, ContFunc cont) {
-    return [[mvalue._object class] bind](mvalue._object, ^MonadicValue(id value) { return cont(value); });
+    return [[mvalue._object class] bind](mvalue._object, ^MonadicValue(id value, Class m) { return cont(value); });
 }
 
 

@@ -115,7 +115,7 @@ Writer* Censor(OutputModifier mod, Writer* m) {
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^Writer*(Writer* mvalue, Continuation cont) {
         Record rec0 = RunWriter(mvalue);
-        Record rec1 = RunWriter((Writer*)cont(rec0[0]));
+        Record rec1 = RunWriter((Writer*)cont(rec0[0], self));
         Class monoidClass = [rec0[1] class];
         Output jointOutput = [monoidClass mappend](rec0[1], rec1[1]);
         return MkWriter(MkRecord(rec1[0], jointOutput));

@@ -17,35 +17,35 @@
 
 
 Continuation dec(int by) {
-    return ^MonadicValue(id val) {
+    return ^MonadicValue(id val, Class m) {
         int res = [val intValue]-by;
         return res >= 0? Just(@(res)): Nothing();
     };
 }
 
 Continuation checkSign() {
-    return ^MonadicValue(id val){
+    return ^MonadicValue(id val, Class m){
         return [val intValue] > 0? Just(val): Nothing();
     };
 }
 
 Continuation numToStr() {
-    return ^MonadicValue(id val){
+    return ^MonadicValue(id val, Class m){
         NSLog(@"numToStr");
         return Just([NSString stringWithFormat:@"%d", [val intValue]]);
     };
 }
 
 Continuation pop() {
-    return ^MonadicValue(id value) {
+    return ^MonadicValue(id value, Class m) {
         return MkState(^Tuple*(List* state) {
-            return [[Tuple alloc] initWithObjectsFromArray:@[Head(state), Tail(state)]];
+            return MkPair(Head(state), Tail(state));
         });
     };
 }
 
 Continuation push(id obj) {
-    return ^MonadicValue(id value) {
+    return ^MonadicValue(id value, Class m) {
         return MkState(^Tuple*(List* state) {
             return [[Tuple alloc] initWithObjectsFromArray:@[[NSNull null], Cons(obj, state)]];
         });
@@ -54,7 +54,7 @@ Continuation push(id obj) {
 
 
 Continuation gen() {
-    return ^MonadicValue(id value) {
+    return ^MonadicValue(id value, Class m) {
         return Replicate(3, value);
     };
 }
@@ -89,9 +89,9 @@ Continuation gen() {
                     dec(2) >=
                     dec(4) >=
                     Just(@3) >=
-                    ^MonadicValue(id value) {
+                    ^MonadicValue(id value, Class m) {
                         NSLog(@"value = %@", value);
-                        return [Maybe unit](value);
+                        return [m unit](value);
                     } >=
                     dec(1);
     
@@ -101,7 +101,7 @@ Continuation gen() {
         push(@42) >=
         push(@666) >
         Get() >=
-        ^MonadicValue(id value) {
+        ^MonadicValue(id value, Class m) {
             NSLog(@"state1: %@", value);
             return Get();
         } >=

@@ -74,7 +74,7 @@ Reader* Local(EnvironmentModifier mod, Reader* m) {
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^Reader*(Reader* mvalue, Continuation cont) {
         return MkReader(^id(Environment env) {
-            return RunReader((Reader*)cont(mvalue.computation(env)), env);
+            return RunReader((Reader*)cont(mvalue.computation(env), self), env);
         });
     };
 }

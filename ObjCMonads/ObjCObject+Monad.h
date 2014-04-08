@@ -18,7 +18,7 @@
 
 #define MCONT_SEP(...) metamacro_if_eq(0, metamacro_argcount0(__VA_ARGS__))()(,)
 #define MCONT(fname, ...) \
-    ^MonadicValue(id value) { \
+    ^MonadicValue(id value, Class m) { \
         return (MonadicValue)fname( \
             __VA_ARGS__ \
             MCONT_SEP(__VA_ARGS__) \

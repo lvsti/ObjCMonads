@@ -12,7 +12,7 @@
 @protocol Monad;
 
 typedef id<Monad> MonadicValue;
-typedef MonadicValue(^Continuation)(id);
+typedef MonadicValue(^Continuation)(id, Class);
 
 
 @protocol Monad <NSObject>

@@ -85,7 +85,7 @@ id FromJust(Maybe* m) {
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^MonadicValue(Maybe* mvalue, Continuation cont) {
         if (mvalue.isJust) {
-            return cont(mvalue.value);
+            return cont(mvalue.value, self);
         }
         
         // nothing

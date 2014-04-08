@@ -93,7 +93,7 @@ id FromRight(Either* e) {
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^MonadicValue(Either* mvalue, Continuation cont) {
         if (!mvalue.isLeft) {
-            return cont(mvalue.value);
+            return cont(mvalue.value, self);
         }
         
         // nothing

@@ -195,7 +195,10 @@ BOOL Elem(id value, List* list) {
 
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^List*(List* mvalue, Continuation cont) {
-        return Concat(Map(cont, mvalue));
+        Mapping m = ^id(id value) {
+            return cont(value, self);
+        };
+        return Concat(Map(m, mvalue));
     };
 }
 

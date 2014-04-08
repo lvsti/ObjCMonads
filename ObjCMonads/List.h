@@ -40,6 +40,7 @@ extern "C" {
     List* Concat(List* list);
     List* Map(Mapping mapping, List* list);
     List* Replicate(int count, id item);
+    BOOL Elem(id value, List* list);
     
 #ifdef __cplusplus
 }

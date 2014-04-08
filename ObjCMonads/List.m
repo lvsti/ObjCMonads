@@ -107,6 +107,10 @@ List* Replicate(int count, id item) {
     return [[List alloc] initWithFArray:newArray];
 }
 
+BOOL Elem(id value, List* list) {
+    return [list.array containsObject:value];
+}
+
 
 @implementation List
 

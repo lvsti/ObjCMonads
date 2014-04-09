@@ -7,20 +7,16 @@
 //
 
 #import "AKnightsQuest.h"
+
+#import "Control.Monad.h"
 #import "List.h"
-#import "MonadPlus.h"
 #import "ObjCObject+Monad.h"
 #import "Tuple.h"
 
 typedef Pair(@int, @int) KnightPos;
 
 
-MonadicValue Guard(BOOL value, Class m) {
-    return value? [m unit](MkUnit()): [m mzero]();
-}
-
-
-List(KnightPos) MoveKnight(KnightPos pos) {
+List OF(KnightPos)* MoveKnight(KnightPos pos) {
     int c = [Fst(pos) intValue];
     int r = [Snd(pos) intValue];
     NSArray* moves = @[MkPair(@(c+2), @(r-1)), MkPair(@(c+2), @(r+1)),
@@ -41,7 +37,7 @@ List(KnightPos) MoveKnight(KnightPos pos) {
         MEND;
 }
 
-List(KnightPos) In3Moves(KnightPos startPos) {
+List OF(KnightPos)* In3Moves(KnightPos startPos) {
     return
         MBEGIN(MoveKnight(startPos)) >=
         MCONT(MoveKnight) >=

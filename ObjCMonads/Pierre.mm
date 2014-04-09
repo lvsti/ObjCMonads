@@ -25,20 +25,20 @@ Pole EmptyPole() {
 }
 
 
-Maybe(Pole) LandLeft(Birds n, Pole pole) {
+Maybe OF(Pole)* LandLeft(Birds n, Pole pole) {
     int newLeft = [Fst(pole) intValue] + [n intValue];
     int right = [Snd(pole) intValue];
 
     return abs(newLeft - right) < 4? Just(MkPole(newLeft, right)): Nothing();
 }
 
-Maybe(Pole) LandRight(Birds n, Pole pole) {
+Maybe OF(Pole)* LandRight(Birds n, Pole pole) {
     int left = [Fst(pole) intValue];
     int newRight = [Snd(pole) intValue] + [n intValue];
     return abs(left - newRight) < 4? Just(MkPole(left, newRight)): Nothing();
 }
 
-Maybe(Pole) Banana(Pole pole) {
+Maybe OF(Pole)* Banana(Pole pole) {
     return Nothing();
 }
 

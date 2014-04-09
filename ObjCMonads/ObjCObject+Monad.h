@@ -12,7 +12,7 @@
 
 #define MBEGIN(x) (ObjCObject(x)
 #define MEND )._object;
-#define MRETURN(x) [m unit](x);
+#define MRETURN(x) [m unit](x)
 
 #define metamacro_argcount0(...) metamacro_if_eq( metamacro_argcount(__VA_ARGS__), metamacro_argcount( foo, ## __VA_ARGS__) )( metamacro_dec(metamacro_argcount(__VA_ARGS__)) )(metamacro_argcount(__VA_ARGS__))
 

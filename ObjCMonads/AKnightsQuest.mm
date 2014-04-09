@@ -49,12 +49,32 @@ BOOL CanReachIn3Moves(KnightPos startPos, KnightPos endPos) {
     return Elem(endPos, In3Moves(startPos));
 }
 
+
+List OF(KnightPos)* InNMoves(int n, KnightPos startPos) {
+//    inMany x start = return start >>= foldr (<=<) return (replicate x moveKnight)
+    return
+        MBEGIN(Singleton(startPos)) >=
+        ^MonadicValue(id value, Class m) {
+            Continuation cont = FoldR(^id(id obj, id accum) {
+                return MCompose(obj, accum, m);
+            }, [m unit], Replicate(n, MCONT(MoveKnight)));
+
+            return cont(value, m);
+        }
+        MEND;
+}
+
+BOOL CanReachInNMoves(int n, KnightPos startPos, KnightPos endPos) {
+    return Elem(endPos, InNMoves(n, startPos));
+}
+
 void Knight() {
     id start = MkPair(@6, @2);
     NSLog(@"knight: %@", MoveKnight(start));
 //    NSLog(@"in 3 moves: %@", In3Moves(start));
-    id end = MkPair(@6, @1);
+    id end = MkPair(@7, @3);
     NSLog(@"can reach %@ from %@ in 3 moves: %d", end, start, CanReachIn3Moves(start, end));
+    NSLog(@"can reach %@ from %@ in %d moves: %d", end, start, 5, CanReachInNMoves(5, start, end));
 }
 
 

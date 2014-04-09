@@ -10,8 +10,6 @@
 #import "Functor.h"
 #import "Monad.h"
 
-#define Either(a, b) Either*
-
 
 @interface Either : NSObject<Monad, Functor, NSCopying>
 

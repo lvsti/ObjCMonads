@@ -10,8 +10,6 @@
 #import "Functor.h"
 #import "Monad.h"
 
-#define Maybe(a) Maybe*
-
 
 @interface Maybe : NSObject<Monad, Functor, NSCopying>
 

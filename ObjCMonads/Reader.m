@@ -7,7 +7,6 @@
 //
 
 #import "Reader.h"
-#undef Reader
 
 
 @interface Reader ()

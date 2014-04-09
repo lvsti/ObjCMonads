@@ -14,7 +14,6 @@
 typedef id(^ReduceStepL)(id accum, id obj);
 typedef id(^ReduceStepR)(id obj, id accum);
 
-#define List(a) List*
 
 @interface List : NSObject<Monad, Functor, Monoid, NSCopying>
 

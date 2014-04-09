@@ -7,7 +7,6 @@
 //
 
 #import "Either.h"
-#undef Either
 
 
 @interface Either ()

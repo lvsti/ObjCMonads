@@ -168,21 +168,6 @@ BOOL Elem(id value, List* list) {
     };
 }
 
-#pragma mark - MonadPlus:
-
-+ (id<MonadPlus>(^)())mzero {
-    return ^List*() {
-        return Empty();
-    };
-}
-
-+ (id<MonadPlus>(^)(id<MonadPlus>, id<MonadPlus>))mplus {
-    return ^List*(List* list1, List* list2) {
-        return Append(list1, list2);
-    };
-}
-
-
 #pragma mark - Functor:
 
 + (id<Functor>(^)(Mapping, id<Functor>))fmap {

@@ -38,6 +38,7 @@
 		E8E18E2418EDF765009E0ECE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E18E0318EDF764009E0ECE /* Cocoa.framework */; };
 		E8E18E2C18EDF766009E0ECE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8E18E2A18EDF766009E0ECE /* InfoPlist.strings */; };
 		E8E18E2E18EDF766009E0ECE /* ObjCMonadsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E18E2D18EDF766009E0ECE /* ObjCMonadsTests.m */; };
+		E8F696D918F5ECDB00347545 /* Control.Monad.m in Sources */ = {isa = PBXBuildFile; fileRef = E8F696D818F5ECDB00347545 /* Control.Monad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +96,6 @@
 		E8B6E99518F338250026B4ED /* ObjCObject+Monad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjCObject+Monad.h"; sourceTree = "<group>"; };
 		E8B6E99618F495A70026B4ED /* AKnightsQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKnightsQuest.h; sourceTree = "<group>"; };
 		E8B6E99718F495A70026B4ED /* AKnightsQuest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AKnightsQuest.mm; sourceTree = "<group>"; };
-		E8B6E99918F498F10026B4ED /* MonadPlus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MonadPlus.h; path = ObjCMonads/MonadPlus.h; sourceTree = "<group>"; };
 		E8E18E0018EDF764009E0ECE /* ObjCMonads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCMonads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E18E0318EDF764009E0ECE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E8E18E0618EDF764009E0ECE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -114,6 +114,8 @@
 		E8E18E2918EDF765009E0ECE /* ObjCMonadsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ObjCMonadsTests-Info.plist"; sourceTree = "<group>"; };
 		E8E18E2B18EDF766009E0ECE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E8E18E2D18EDF766009E0ECE /* ObjCMonadsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCMonadsTests.m; sourceTree = "<group>"; };
+		E8F696D718F5ECDB00347545 /* Control.Monad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Control.Monad.h; sourceTree = "<group>"; };
+		E8F696D818F5ECDB00347545 /* Control.Monad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Control.Monad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +152,6 @@
 				E816ED6A18F05D8500481229 /* Maybe.m */,
 				E816ED6818F05D6300481229 /* Monad.h */,
 				E83CDB4718F1ADB100FB7004 /* Monad.m */,
-				E8B6E99918F498F10026B4ED /* MonadPlus.h */,
 				E83CDB4018F17F0100FB7004 /* Monoid.h */,
 				E8B6E98A18F327220026B4ED /* Monoid.m */,
 				E83CDB3918F14E3700FB7004 /* Reader.h */,
@@ -197,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				E83CDB4B18F1BB7600FB7004 /* External */,
+				E8F696D618F5ECDB00347545 /* Library */,
 				E83CDB3818F1349D00FB7004 /* Monad */,
 				E8E18E0918EDF764009E0ECE /* ObjCMonads */,
 				E8E18E2718EDF765009E0ECE /* ObjCMonadsTests */,
@@ -292,6 +294,16 @@
 				E8E18E2A18EDF766009E0ECE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E8F696D618F5ECDB00347545 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				E8F696D718F5ECDB00347545 /* Control.Monad.h */,
+				E8F696D818F5ECDB00347545 /* Control.Monad.m */,
+			);
+			name = Library;
+			path = ObjCMonads/Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,6 +419,7 @@
 				E816ED7418F062EB00481229 /* Tuple.m in Sources */,
 				E83CDB3718F1348100FB7004 /* List.m in Sources */,
 				E8E18E1018EDF765009E0ECE /* main.m in Sources */,
+				E8F696D918F5ECDB00347545 /* Control.Monad.m in Sources */,
 				E83CDB4618F1A48300FB7004 /* NSString+Monoid.m in Sources */,
 				E83CDB4818F1ADB100FB7004 /* Monad.m in Sources */,
 				E83CDB3B18F14E3700FB7004 /* Reader.m in Sources */,

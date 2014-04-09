@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 LKXF. All rights reserved.
 //
 
+#ifndef CONTROL_MONAD_H
+#define CONTROL_MONAD_H
+
 #import <Foundation/Foundation.h>
 #import "List.h"
 #import "Maybe.h"
@@ -36,6 +39,9 @@
 extern "C" {
 #endif
 
+    // (<=<) :: Monad m => (b -> m c) -> (a -> m b) -> (a -> m c)
+    Continuation MCompose(Continuation contBC, Continuation contAB, Class<Monad> m);
+    
     // guard :: (MonadPlus m) => Bool -> m ()
     MonadicValue Guard(BOOL value, Class<MonadPlus> m);
     
@@ -43,3 +49,5 @@ extern "C" {
 }
 #endif
 
+
+#endif

@@ -12,6 +12,12 @@
 #import "Tuple.h"
 
 
+Continuation MCompose(Continuation contBC, Continuation contAB, Class<Monad> m) {
+    return ^MonadicValue(id value, Class m) {
+        return [m unit](value).bind(contAB).bind(contBC);
+    };
+}
+
 MonadicValue Guard(BOOL value, Class<MonadPlus> m) {
     return value? [m unit](MkUnit()): [m mzero]();
 }

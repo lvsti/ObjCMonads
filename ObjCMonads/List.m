@@ -34,7 +34,7 @@ List* Cons(id value, List* list) {
 }
 
 List* Singleton(id value) {
-    return Cons(value, Empty());
+    return [[List alloc] initWithFArray:@[value]];
 }
 
 id Head(List* list) {

@@ -11,9 +11,10 @@
 extern "C" {
 #endif
     
-    void Pierre();
+    void Pierre1();
     void Pierre2();
     void Pierre3();
+    void Pierre4();
 
 #ifdef __cplusplus
 }

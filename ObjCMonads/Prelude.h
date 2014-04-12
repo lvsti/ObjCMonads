@@ -17,10 +17,10 @@
 #define HOF_DEF_PARAMS(...)                 metamacro_take(HOF_DEF_PARAM_COUNT(__VA_ARGS__), __VA_ARGS__)
 #define HOF_DEF_BODY(...)                   metamacro_drop(HOF_DEF_PARAM_COUNT(__VA_ARGS__), __VA_ARGS__)
 #define HOF_DEF_LAYER_BEGIN(idx, ctx, arg)  { return (HOF_KIND(idx, ctx))^id(arg)
-#define HOF_DEF_LAYER_END(idx, ctx)         ; }
+#define HOF_DEF_LAYER_END(idx, arg)         ; }
 #define HOF_DECL_PARAM_COUNT(...)           metamacro_argcount(__VA_ARGS__)
 
-#define HOF(fname, ...) \
+#define HOF_DEFINE(fname, ...) \
     HOF_HEAD(fname, HOF_DEF_PARAM_COUNT(__VA_ARGS__)) \
     metamacro_foreach_cxt(HOF_DEF_LAYER_BEGIN,  , HOF_DEF_PARAM_COUNT(__VA_ARGS__), HOF_DEF_PARAMS(__VA_ARGS__)) \
     HOF_DEF_BODY(__VA_ARGS__) \
@@ -38,13 +38,13 @@ extern "C" {
 #endif
 
     // fst :: (a, b) -> a
-    HOF_DECLARE(Fst, Tuple* pair);
+    HOF_DECLARE(_Fst, Tuple* pair);
     
     // snd :: (a, b) -> b
-    HOF_DECLARE(Snd, Tuple* pair);
+    HOF_DECLARE(_Snd, Tuple* pair);
     
     // (,) :: a -> b -> (a, b)
-    HOF_DECLARE(Pair, id a, id b);
+    HOF_DECLARE(_Pair, id a, id b);
     
     // curry :: ((a, b) -> c) -> a -> b -> c
     HOF_DECLARE(Curry, id pairFn, id a, id b);

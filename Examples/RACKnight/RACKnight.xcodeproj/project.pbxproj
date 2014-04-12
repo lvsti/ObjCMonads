@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E89F245A18F9884300D84961 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E89F245918F9884300D84961 /* Cocoa.framework */; };
+		E89F246418F9884300D84961 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E89F246218F9884300D84961 /* InfoPlist.strings */; };
+		E89F246618F9884300D84961 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E89F246518F9884300D84961 /* main.m */; };
+		E89F246A18F9884300D84961 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E89F246818F9884300D84961 /* Credits.rtf */; };
+		E89F246D18F9884300D84961 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E89F246C18F9884300D84961 /* AppDelegate.m */; };
+		E89F247018F9884300D84961 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E89F246E18F9884300D84961 /* MainMenu.xib */; };
+		E89F247218F9884300D84961 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E89F247118F9884300D84961 /* Images.xcassets */; };
+		E89F247918F9884400D84961 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E89F247818F9884300D84961 /* XCTest.framework */; };
+		E89F247A18F9884400D84961 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E89F245918F9884300D84961 /* Cocoa.framework */; };
+		E89F248218F9884400D84961 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E89F248018F9884400D84961 /* InfoPlist.strings */; };
+		E89F248418F9884400D84961 /* RACKnightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E89F248318F9884400D84961 /* RACKnightTests.m */; };
+		E89F24B418F99AFA00D84961 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E89F24B318F99AFA00D84961 /* ReactiveCocoa.framework */; };
+		E89F24B518F99B0600D84961 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E89F24B318F99AFA00D84961 /* ReactiveCocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E89F247B18F9884400D84961 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E89F244E18F9884300D84961 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E89F245518F9884300D84961;
+			remoteInfo = RACKnight;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E89F248F18F988B700D84961 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E89F24B518F99B0600D84961 /* ReactiveCocoa.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		E89F245618F9884300D84961 /* RACKnight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RACKnight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E89F245918F9884300D84961 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E89F245C18F9884300D84961 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E89F245D18F9884300D84961 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E89F245E18F9884300D84961 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E89F246118F9884300D84961 /* RACKnight-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RACKnight-Info.plist"; sourceTree = "<group>"; };
+		E89F246318F9884300D84961 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E89F246518F9884300D84961 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E89F246718F9884300D84961 /* RACKnight-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RACKnight-Prefix.pch"; sourceTree = "<group>"; };
+		E89F246918F9884300D84961 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		E89F246B18F9884300D84961 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E89F246C18F9884300D84961 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E89F246F18F9884300D84961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E89F247118F9884300D84961 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E89F247718F9884300D84961 /* RACKnightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RACKnightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E89F247818F9884300D84961 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E89F247F18F9884400D84961 /* RACKnightTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RACKnightTests-Info.plist"; sourceTree = "<group>"; };
+		E89F248118F9884400D84961 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E89F248318F9884400D84961 /* RACKnightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RACKnightTests.m; sourceTree = "<group>"; };
+		E89F24B318F99AFA00D84961 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../../External/ReactiveCocoa.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E89F245318F9884300D84961 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E89F245A18F9884300D84961 /* Cocoa.framework in Frameworks */,
+				E89F24B418F99AFA00D84961 /* ReactiveCocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E89F247418F9884300D84961 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E89F247A18F9884400D84961 /* Cocoa.framework in Frameworks */,
+				E89F247918F9884400D84961 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E89F244D18F9884300D84961 = {
+			isa = PBXGroup;
+			children = (
+				E89F24B318F99AFA00D84961 /* ReactiveCocoa.framework */,
+				E89F245F18F9884300D84961 /* RACKnight */,
+				E89F247D18F9884400D84961 /* RACKnightTests */,
+				E89F245818F9884300D84961 /* Frameworks */,
+				E89F245718F9884300D84961 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E89F245718F9884300D84961 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E89F245618F9884300D84961 /* RACKnight.app */,
+				E89F247718F9884300D84961 /* RACKnightTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E89F245818F9884300D84961 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E89F245918F9884300D84961 /* Cocoa.framework */,
+				E89F247818F9884300D84961 /* XCTest.framework */,
+				E89F245B18F9884300D84961 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E89F245B18F9884300D84961 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E89F245C18F9884300D84961 /* AppKit.framework */,
+				E89F245D18F9884300D84961 /* CoreData.framework */,
+				E89F245E18F9884300D84961 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E89F245F18F9884300D84961 /* RACKnight */ = {
+			isa = PBXGroup;
+			children = (
+				E89F246B18F9884300D84961 /* AppDelegate.h */,
+				E89F246C18F9884300D84961 /* AppDelegate.m */,
+				E89F246E18F9884300D84961 /* MainMenu.xib */,
+				E89F247118F9884300D84961 /* Images.xcassets */,
+				E89F246018F9884300D84961 /* Supporting Files */,
+			);
+			path = RACKnight;
+			sourceTree = "<group>";
+		};
+		E89F246018F9884300D84961 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E89F246118F9884300D84961 /* RACKnight-Info.plist */,
+				E89F246218F9884300D84961 /* InfoPlist.strings */,
+				E89F246518F9884300D84961 /* main.m */,
+				E89F246718F9884300D84961 /* RACKnight-Prefix.pch */,
+				E89F246818F9884300D84961 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E89F247D18F9884400D84961 /* RACKnightTests */ = {
+			isa = PBXGroup;
+			children = (
+				E89F248318F9884400D84961 /* RACKnightTests.m */,
+				E89F247E18F9884400D84961 /* Supporting Files */,
+			);
+			path = RACKnightTests;
+			sourceTree = "<group>";
+		};
+		E89F247E18F9884400D84961 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E89F247F18F9884400D84961 /* RACKnightTests-Info.plist */,
+				E89F248018F9884400D84961 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E89F245518F9884300D84961 /* RACKnight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E89F248718F9884400D84961 /* Build configuration list for PBXNativeTarget "RACKnight" */;
+			buildPhases = (
+				E89F245218F9884300D84961 /* Sources */,
+				E89F245318F9884300D84961 /* Frameworks */,
+				E89F245418F9884300D84961 /* Resources */,
+				E89F248F18F988B700D84961 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RACKnight;
+			productName = RACKnight;
+			productReference = E89F245618F9884300D84961 /* RACKnight.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E89F247618F9884300D84961 /* RACKnightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E89F248A18F9884400D84961 /* Build configuration list for PBXNativeTarget "RACKnightTests" */;
+			buildPhases = (
+				E89F247318F9884300D84961 /* Sources */,
+				E89F247418F9884300D84961 /* Frameworks */,
+				E89F247518F9884300D84961 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E89F247C18F9884400D84961 /* PBXTargetDependency */,
+			);
+			name = RACKnightTests;
+			productName = RACKnightTests;
+			productReference = E89F247718F9884300D84961 /* RACKnightTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E89F244E18F9884300D84961 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = LKXF;
+				TargetAttributes = {
+					E89F247618F9884300D84961 = {
+						TestTargetID = E89F245518F9884300D84961;
+					};
+				};
+			};
+			buildConfigurationList = E89F245118F9884300D84961 /* Build configuration list for PBXProject "RACKnight" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E89F244D18F9884300D84961;
+			productRefGroup = E89F245718F9884300D84961 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E89F245518F9884300D84961 /* RACKnight */,
+				E89F247618F9884300D84961 /* RACKnightTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E89F245418F9884300D84961 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E89F246418F9884300D84961 /* InfoPlist.strings in Resources */,
+				E89F247218F9884300D84961 /* Images.xcassets in Resources */,
+				E89F246A18F9884300D84961 /* Credits.rtf in Resources */,
+				E89F247018F9884300D84961 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E89F247518F9884300D84961 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E89F248218F9884400D84961 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E89F245218F9884300D84961 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E89F246D18F9884300D84961 /* AppDelegate.m in Sources */,
+				E89F246618F9884300D84961 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E89F247318F9884300D84961 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E89F248418F9884400D84961 /* RACKnightTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E89F247C18F9884400D84961 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E89F245518F9884300D84961 /* RACKnight */;
+			targetProxy = E89F247B18F9884400D84961 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E89F246218F9884300D84961 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E89F246318F9884300D84961 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E89F246818F9884300D84961 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E89F246918F9884300D84961 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		E89F246E18F9884300D84961 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E89F246F18F9884300D84961 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		E89F248018F9884400D84961 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E89F248118F9884400D84961 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E89F248518F9884400D84961 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E89F248618F9884400D84961 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E89F248818F9884400D84961 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Lkxf/Projects/OpenSource/ObjCMonads/External,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RACKnight/RACKnight-Prefix.pch";
+				INFOPLIST_FILE = "RACKnight/RACKnight-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E89F248918F9884400D84961 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Lkxf/Projects/OpenSource/ObjCMonads/External,
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RACKnight/RACKnight-Prefix.pch";
+				INFOPLIST_FILE = "RACKnight/RACKnight-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E89F248B18F9884400D84961 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RACKnight.app/Contents/MacOS/RACKnight";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RACKnight/RACKnight-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RACKnightTests/RACKnightTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E89F248C18F9884400D84961 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RACKnight.app/Contents/MacOS/RACKnight";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RACKnight/RACKnight-Prefix.pch";
+				INFOPLIST_FILE = "RACKnightTests/RACKnightTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E89F245118F9884300D84961 /* Build configuration list for PBXProject "RACKnight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E89F248518F9884400D84961 /* Debug */,
+				E89F248618F9884400D84961 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E89F248718F9884400D84961 /* Build configuration list for PBXNativeTarget "RACKnight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E89F248818F9884400D84961 /* Debug */,
+				E89F248918F9884400D84961 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E89F248A18F9884400D84961 /* Build configuration list for PBXNativeTarget "RACKnightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E89F248B18F9884400D84961 /* Debug */,
+				E89F248C18F9884400D84961 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E89F244E18F9884300D84961 /* Project object */;
+}

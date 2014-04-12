@@ -11,6 +11,7 @@
 #import "Maybe.h"
 #import "State.h"
 #import "Writer.h"
+#import "NSString+Monoid.h"
 #import "ObjCObject+Monad.h"
 #import "ObjCObject+Monoid.h"
 #import "Pierre.h"
@@ -70,9 +71,21 @@ Continuation gen() {
 //    b <- logNumber 5  
 //    return (a*b)
 
-//Writer* logNumber(int n) {
-//    return MkWriter(n, Singleton([NSString stringWithFormat:<#(NSString *), ...#>]))
-//}
+Writer* logNumber(int n) {
+    return MkWriter(MkRecord(@(n), Singleton([NSString stringWithFormat:@"got number: %d", n])));
+}
+
+Writer* multWithLog() {
+    return MBEGIN(logNumber(3)) >=
+    ^MonadicValue(id a) {
+        return MBEGIN(logNumber(5)) >=
+        ^MonadicValue(id b, Class m) {
+            return MRETURN(@([a intValue]*[b intValue]));
+        }
+        MEND;
+    }
+    MEND;
+}
 
 
 // TODO:

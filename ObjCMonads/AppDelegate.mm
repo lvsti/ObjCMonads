@@ -15,6 +15,7 @@
 #import "ObjCObject+Monad.h"
 #import "ObjCObject+Monoid.h"
 #import "Pierre.h"
+#import "AKnightsQuest.h"
 
 
 Continuation dec(int by) {
@@ -48,7 +49,7 @@ Continuation pop() {
 Continuation push(id obj) {
     return ^MonadicValue(id value, Class m) {
         return MkState(^Tuple*(List* state) {
-            return [[Tuple alloc] initWithObjectsFromArray:@[[NSNull null], Cons(obj, state)]];
+            return MkPair(MkUnit(), Cons(obj, state));
         });
     };
 }
@@ -97,7 +98,14 @@ Writer* multWithLog() {
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    Pierre();
+    Knight();
+    
+    Pierre4();
+    NSLog(@"writer: %@", multWithLog());
+    
+    ObjCObject monoid = ObjCObject(Singleton(@42)) + Empty() + Cons(@55, Cons(@66, Empty()));
+    NSLog(@"monoid: %@", monoid._object);
+    
     ObjCObject val = ObjCObject(Just(@5)) >=
                     dec(2) >=
                     dec(4) >=

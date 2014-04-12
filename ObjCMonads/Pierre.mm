@@ -11,31 +11,40 @@
 #import "Tuple.h"
 
 
-typedef NSNumber* Birds;
-typedef Pair(Birds, Birds) Pole;
+@interface Pole : NSObject
+@property int left;
+@property int right;
+@end
 
-Pole MkPole(int left, int right) {
-    return MkPair(@(left), @(right));
+@implementation Pole
+@end
+
+
+Pole* MkPole(int left, int right) {
+    Pole* pole = [Pole new];
+    pole.left = left;
+    pole.right = right;
+    return pole;
 }
 
-Pole EmptyPole() {
+Pole* EmptyPole() {
     return MkPole(0, 0);
 }
 
 
-Continuation LandLeft(Birds n) {
-    return ^MonadicValue(Pole pole, Class m) {
-        int newLeft = [Fst(pole) intValue] + [n intValue];
-        int right = [Snd(pole) intValue];
+Continuation LandLeft(int birds) {
+    return ^MonadicValue(Pole* pole, Class m) {
+        int newLeft = pole.left + birds;
+        int right = pole.right;
         
         return abs(newLeft - right) < 4? Just(MkPole(newLeft, right)): Nothing();
     };
 }
 
-Continuation LandRight(Birds n) {
-    return ^MonadicValue(Pole pole, Class m) {
-        int left = [Fst(pole) intValue];
-        int newRight = [Snd(pole) intValue] + [n intValue];
+Continuation LandRight(int birds) {
+    return ^MonadicValue(Pole* pole, Class m) {
+        int left = pole.left;
+        int newRight = pole.right + birds;
 
         return abs(left - newRight) < 4? Just(MkPole(left, newRight)): Nothing();
     };
@@ -51,13 +60,13 @@ Continuation Banana() {
 void Pierre1() {
     id result =
         Just(EmptyPole()).
-        bind(LandLeft(@1)).
-        bind(LandRight(@3)).
-        bind(LandLeft(@1)).
-        bind(LandRight(@2)).
+        bind(LandLeft(1)).
+        bind(LandRight(3)).
+        bind(LandLeft(1)).
+        bind(LandRight(2)).
         bind(Banana()).
-        bind(LandLeft(@1)).
-        bind(LandLeft(@3));
+        bind(LandLeft(1)).
+        bind(LandLeft(3));
     
     NSLog(@"pierre: %@", result);
 }
@@ -84,39 +93,90 @@ void Pierre1() {
 #define OF(...)
 
 
-// _LandLeft :: NSNumber* -> Pole -> Maybe Pole
-// _LandLeft @42 :: Pole -> Maybe Pole   ~   a -> m b
-Maybe OF(Pole)* _LandLeft(Birds n, Pole pole) {
-    int newLeft = [Fst(pole) intValue] + [n intValue];
-    int right = [Snd(pole) intValue];
+// _LandLeft :: int -> Pole -> Maybe Pole
+// _LandLeft 42 :: Pole -> Maybe Pole   ~   a -> m b
+Maybe OF(Pole*)* _LandLeft(int birds, Pole* pole) {
+    int newLeft = pole.left + birds;
+    int right = pole.right;
 
     return abs(newLeft - right) < 4? Just(MkPole(newLeft, right)): Nothing();
 }
 
-Maybe OF(Pole)* _LandRight(Birds n, Pole pole) {
-    int left = [Fst(pole) intValue];
-    int newRight = [Snd(pole) intValue] + [n intValue];
+Maybe OF(Pole*)* _LandRight(int birds, Pole* pole) {
+    int left = pole.left;
+    int newRight = pole.right + birds;
     return abs(left - newRight) < 4? Just(MkPole(left, newRight)): Nothing();
 }
 
-Maybe OF(Pole)* _Banana(Pole pole) {
+Maybe OF(Pole*)* _Banana(Pole* pole) {
     return Nothing();
 }
 
 
-void Pierre2() {
+void Pierre2a() {
     id result =
         Just(EmptyPole()).
-        bind(MCONT(_LandLeft, @1)).
-        bind(MCONT(_LandRight, @3)).
-        bind(MCONT(_LandLeft, @1)).
-        bind(MCONT(_LandRight, @2)).
+        bind(MCONT(_LandLeft, 1)).
+        bind(MCONT(_LandRight, 3)).
+        bind(MCONT(_LandLeft, 1)).
+        bind(MCONT(_LandRight, 2)).
         bind(MCONT(_Banana)).
-        bind(MCONT(_LandLeft, @1)).
-        bind(MCONT(_LandLeft, @3));
+        bind(MCONT(_LandLeft, 1)).
+        bind(MCONT(_LandLeft, 3));
     
     NSLog(@"pierre: %@", result);
 }
+
+
+
+
+
+
+#define MCONT_BEGIN(monad, type, fname, ...) \
+    Continuation fname(__VA_ARGS__) { \
+        return ^MonadicValue(type value, Class m )
+#define MCONT_END ; }
+
+
+MCONT_BEGIN(Maybe*, Pole*, __LandLeft, int birds) {
+    int newLeft = value.left + birds;
+    int right = value.right;
+
+    return abs(newLeft - right) < 4? Just(MkPole(newLeft, right)): Nothing();
+}
+MCONT_END;
+
+MCONT_BEGIN(Maybe*, Pole*, __LandRight, int birds) {
+    int left = value.left;
+    int newRight = value.right + birds;
+    
+    return abs(left - newRight) < 4? Just(MkPole(left, newRight)): Nothing();
+}
+MCONT_END;
+
+MCONT_BEGIN(Maybe*, Pole*, __Banana) {
+    return Nothing();
+}
+MCONT_END;
+
+
+
+
+void Pierre2b() {
+    id result =
+        Just(EmptyPole()).
+        bind(__LandLeft(1)).
+        bind(__LandRight(3)).
+        bind(__LandLeft(1)).
+        bind(__LandRight(2)).
+        bind(__Banana()).
+        bind(__LandLeft(1)).
+        bind(__LandLeft(3));
+    
+    NSLog(@"pierre: %@", result);
+}
+
+
 
 
 
@@ -130,13 +190,13 @@ void Pierre2() {
 
 void Pierre3() {
     id result = (ObjCObject(Just(EmptyPole())) >=
-        LandLeft(@1) >=
-        LandRight(@3) >=
-        LandLeft(@1) >=
-        LandRight(@2) >=
+        LandLeft(1) >=
+        LandRight(3) >=
+        LandLeft(1) >=
+        LandRight(2) >=
         Banana() >=
-        LandLeft(@1) >=
-        LandLeft(@3)
+        LandLeft(1) >=
+        LandLeft(3)
     )._object;
 
     NSLog(@"pierre: %@", result);
@@ -150,26 +210,16 @@ void Pierre3() {
 
 
 
-
-
-
-
-
-
-
-
-
-
 void Pierre4() {
     id result =
         MBEGIN(Just(EmptyPole())) >=
-        MCONT(_LandLeft, @1) >=
-        MCONT(_LandRight, @3) >=
-        MCONT(_LandLeft, @1) >=
-        MCONT(_LandRight, @2) >=
-        MCONT(_Banana) >=
-        MCONT(_LandLeft, @1) >=
-        MCONT(_LandLeft, @3)
+        __LandLeft(1) >=
+        __LandRight(3) >=
+        __LandLeft(1) >=
+        __LandRight(2) >=
+        __Banana() >=
+        __LandLeft(1) >=
+        __LandLeft(3)
         MEND;
     
     NSLog(@"pierre: %@", result);

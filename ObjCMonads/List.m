@@ -111,6 +111,10 @@ BOOL Elem(id value, List* list) {
     return [list.array containsObject:value];
 }
 
+BOOL IsEmpty(List* list) {
+    return [list.array count] == 0;
+}
+
 
 @implementation List
 

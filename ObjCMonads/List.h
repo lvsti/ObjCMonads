@@ -24,6 +24,7 @@ typedef id(^ReduceStepR)(id obj, id accum);
 #ifdef __cplusplus
 extern "C" {
 #endif
+    
     List* Empty();
     List* Cons(id value, List* list);
     List* Singleton(id value);
@@ -38,6 +39,7 @@ extern "C" {
     List* Map(Mapping mapping, List* list);
     List* Replicate(int count, id item);
     BOOL Elem(id value, List* list);
+    BOOL IsEmpty(List* list);
     
 #ifdef __cplusplus
 }

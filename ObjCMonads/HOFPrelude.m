@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 LKXF. All rights reserved.
 //
 
-#import "Prelude.h"
+#import "HOFPrelude.h"
 
 #define HOF_APPLY_CAST(idx, arg)    (( metamacro_if_eq(0, idx)(id)(metamacro_if_eq(1, idx)(Function)(HOFunction)) )(
 #define HOF_APPLY_CASTS(...)        metamacro_foreach(HOF_APPLY_CAST, , __VA_ARGS__)

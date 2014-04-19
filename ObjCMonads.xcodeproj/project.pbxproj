@@ -22,7 +22,7 @@
 		E83CDB6718F1BB8200FB7004 /* EXTConcreteProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5118F1BB8200FB7004 /* EXTConcreteProtocol.m */; };
 		E83CDB6918F1BB8200FB7004 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5918F1BB8200FB7004 /* EXTRuntimeExtensions.m */; };
 		E83CDB6B18F1BB8200FB7004 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5D18F1BB8200FB7004 /* EXTScope.m */; };
-		E8B6E98618F1E5100026B4ED /* Prelude.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98518F1E5100026B4ED /* Prelude.m */; };
+		E8B6E98618F1E5100026B4ED /* HOFPrelude.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98518F1E5100026B4ED /* HOFPrelude.m */; };
 		E8B6E98B18F327220026B4ED /* Monoid.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98A18F327220026B4ED /* Monoid.m */; };
 		E8B6E98E18F3316C0026B4ED /* Pierre.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98D18F3316C0026B4ED /* Pierre.mm */; };
 		E8B6E99118F337440026B4ED /* ObjCObject+Monad.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E99018F337440026B4ED /* ObjCObject+Monad.mm */; };
@@ -84,8 +84,8 @@
 		E83CDB5C18F1BB8200FB7004 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
 		E83CDB5D18F1BB8200FB7004 /* EXTScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXTScope.m; sourceTree = "<group>"; };
 		E83CDB6118F1BB8200FB7004 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
-		E8B6E98418F1E5100026B4ED /* Prelude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prelude.h; sourceTree = "<group>"; };
-		E8B6E98518F1E5100026B4ED /* Prelude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Prelude.m; sourceTree = "<group>"; };
+		E8B6E98418F1E5100026B4ED /* HOFPrelude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOFPrelude.h; sourceTree = "<group>"; };
+		E8B6E98518F1E5100026B4ED /* HOFPrelude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOFPrelude.m; sourceTree = "<group>"; };
 		E8B6E98A18F327220026B4ED /* Monoid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Monoid.m; path = ObjCMonads/Monoid.m; sourceTree = "<group>"; };
 		E8B6E98C18F3316C0026B4ED /* Pierre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pierre.h; sourceTree = "<group>"; };
 		E8B6E98D18F3316C0026B4ED /* Pierre.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pierre.mm; sourceTree = "<group>"; };
@@ -257,8 +257,8 @@
 				E83CDB4218F19F0700FB7004 /* NSObject+Subclass.m */,
 				E83CDB4418F1A48300FB7004 /* NSString+Monoid.h */,
 				E83CDB4518F1A48300FB7004 /* NSString+Monoid.m */,
-				E8B6E98418F1E5100026B4ED /* Prelude.h */,
-				E8B6E98518F1E5100026B4ED /* Prelude.m */,
+				E8B6E98418F1E5100026B4ED /* HOFPrelude.h */,
+				E8B6E98518F1E5100026B4ED /* HOFPrelude.m */,
 				E8B6E98C18F3316C0026B4ED /* Pierre.h */,
 				E8B6E98D18F3316C0026B4ED /* Pierre.mm */,
 				E8B6E99618F495A70026B4ED /* AKnightsQuest.h */,
@@ -407,7 +407,7 @@
 				E816ED6B18F05D8500481229 /* Maybe.m in Sources */,
 				E83CDB4A18F1B5C600FB7004 /* Functor.m in Sources */,
 				E8B6E99818F495A70026B4ED /* AKnightsQuest.mm in Sources */,
-				E8B6E98618F1E5100026B4ED /* Prelude.m in Sources */,
+				E8B6E98618F1E5100026B4ED /* HOFPrelude.m in Sources */,
 				E8E18E1718EDF765009E0ECE /* AppDelegate.mm in Sources */,
 				E83CDB6918F1BB8200FB7004 /* EXTRuntimeExtensions.m in Sources */,
 				E816ED6718F04B9C00481229 /* CppMonad.cpp in Sources */,

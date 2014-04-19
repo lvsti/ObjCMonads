@@ -7,6 +7,7 @@
 //
 
 #import "Functor.h"
+#import "EXTScope.h"
 
 @concreteprotocol(Functor)
 
@@ -19,6 +20,14 @@
     return ^id<Functor>(id value, id<Functor> ftor) {
         Mapping m = ^id(id x) { return value; };
         return [self fmap](m, ftor);
+    };
+}
+
+- (id<Functor>(^)(Mapping))fmap {
+    @weakify(self);
+    return ^id<Functor>(Mapping m) {
+        @strongify(self);
+        return [[self class] fmap](m, self);
     };
 }
 

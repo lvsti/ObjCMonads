@@ -22,5 +22,7 @@ typedef id(^Mapping)(id);
 // (<$) :: a -> f b -> f a
 + (id<Functor>(^)(id, id<Functor>))freplace;
 
+@property (nonatomic, readonly) id<Functor>(^fmap)(Mapping);
+
 @end
 

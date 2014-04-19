@@ -10,6 +10,7 @@
 #import "Functor.h"
 #import "Monad.h"
 #import "Monoid.h"
+#import "Tuple.h"
 
 typedef id(^ReduceStepL)(id accum, id obj);
 typedef id(^ReduceStepR)(id obj, id accum);
@@ -40,6 +41,15 @@ extern "C" {
     List* Replicate(int count, id item);
     BOOL Elem(id value, List* list);
     BOOL IsEmpty(List* list);
+    
+    // unzip :: [(a, b)] -> ([a], [b])
+    Tuple* Unzip(List* tuples);
+    
+    // zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+    List* ZipWith(id(^zipper)(id, id), List* as, List* bs);
+    
+    
+
     
 #ifdef __cplusplus
 }

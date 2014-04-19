@@ -116,6 +116,21 @@ BOOL IsEmpty(List* list) {
 }
 
 
+Tuple* Unzip(List* tuples) {
+    return FoldR(^id(Tuple* obj, Tuple* accum) {
+        return MkPair(Cons(Fst(obj), Fst(accum)), Cons(Snd(obj), Snd(accum)));
+    }, MkPair(Empty(), Empty()), tuples);
+}
+
+List* ZipWith(id(^zipper)(id, id), List* as, List* bs) {
+    if (IsEmpty(as) || IsEmpty(bs)) {
+        return Empty();
+    }
+    
+    return Cons(zipper(Head(as), Head(bs)), ZipWith(zipper, Tail(as), Tail(bs)));
+}
+
+
 @implementation List
 
 - (instancetype)initWithArray:(NSArray*)array {

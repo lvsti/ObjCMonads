@@ -56,7 +56,7 @@ List OF(KnightPos)* InNMoves(int n, KnightPos startPos) {
         MBEGIN(Singleton(startPos)) >=
         ^MonadicValue(id value, Class m) {
             Continuation cont = FoldR(^id(id obj, id accum) {
-                return MCompose(obj, accum, m);
+                return MComposeR(obj, accum, m);
             }, [m unit], Replicate(n, MCONT(MoveKnight)));
 
             return cont(value, m);

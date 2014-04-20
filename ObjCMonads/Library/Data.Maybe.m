@@ -76,7 +76,7 @@ List* MaybeToList(Maybe* mvalue) {
 
 Maybe* ListToMaybe(List* values) {
     assert(values);
-    return IsEmpty(values)? Nothing(): Just(Head(values));
+    return IsEmpty(values)? [Maybe nothing]: [Maybe just:Head(values)];
 }
 
 List* CatMaybes(List* mvalues) {
@@ -170,10 +170,10 @@ List* MapMaybe(Maybe*(^func)(id), List* values) {
         assert(ftor);
         if (ftor.isJust) {
             assert(map);
-            return Just(map(ftor.value));
+            return [Maybe just:map(ftor.value)];
         }
         
-        return Nothing();
+        return [Maybe nothing];
     };
 }
 
@@ -187,13 +187,13 @@ List* MapMaybe(Maybe*(^func)(id), List* values) {
             return cont(mvalue.value, self);
         }
         
-        return Nothing();
+        return [Maybe nothing];
     };
 }
 
 + (MonadicValue(^)(id))unit {
     return ^Maybe*(id value) {
-        return Just(value);
+        return [Maybe just:value];
     };
 }
 

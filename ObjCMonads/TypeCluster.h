@@ -1,5 +1,5 @@
 //
-//  TypedCluster.h
+//  TypeCluster.h
 //  ObjCMonads
 //
 //  Created by Tamas Lustyik on 2014.04.20..
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TypedCluster : NSObject
+@interface TypeCluster : NSObject
 
 - (instancetype)initWithClusterClass:(Class)clusterClass
                           parameters:(NSArray*)params;

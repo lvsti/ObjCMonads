@@ -1,12 +1,12 @@
 //
-//  TypedCluster.m
+//  TypeCluster.m
 //  ObjCMonads
 //
 //  Created by Tamas Lustyik on 2014.04.20..
 //  Copyright (c) 2014 LKXF. All rights reserved.
 //
 
-#import "TypedCluster.h"
+#import "TypeCluster.h"
 #import <objc/runtime.h>
 
 static const char* kClusterClassKey = "TypedCluster.clusterClass";
@@ -82,7 +82,7 @@ NSString* StringFromBlockSignature(const char* rawsig) {
 }
 
 
-@implementation TypedCluster
+@implementation TypeCluster
 
 - (instancetype)initWithClusterClass:(Class)clusterClass
                           parameters:(NSArray*)params {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E81354FB19040DFC004F376D /* Data.Function.m in Resources */ = {isa = PBXBuildFile; fileRef = E81354FA19040DFC004F376D /* Data.Function.m */; };
 		E816ED6718F04B9C00481229 /* CppMonad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6518F04B9C00481229 /* CppMonad.cpp */; };
 		E816ED6B18F05D8500481229 /* Maybe.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6A18F05D8500481229 /* Maybe.m */; };
 		E816ED6E18F05F9F00481229 /* Either.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6D18F05F9F00481229 /* Either.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E81354F919040DFC004F376D /* Data.Function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.Function.h; sourceTree = "<group>"; };
+		E81354FA19040DFC004F376D /* Data.Function.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.Function.m; sourceTree = "<group>"; };
 		E816ED6518F04B9C00481229 /* CppMonad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CppMonad.cpp; sourceTree = "<group>"; };
 		E816ED6618F04B9C00481229 /* CppMonad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CppMonad.h; sourceTree = "<group>"; };
 		E816ED6818F05D6300481229 /* Monad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Monad.h; path = ObjCMonads/Monad.h; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 			children = (
 				E8F696D718F5ECDB00347545 /* Control.Monad.h */,
 				E8F696D818F5ECDB00347545 /* Control.Monad.m */,
+				E81354F919040DFC004F376D /* Data.Function.h */,
+				E81354FA19040DFC004F376D /* Data.Function.m */,
 			);
 			name = Library;
 			path = ObjCMonads/Library;
@@ -385,6 +390,7 @@
 				E8E18E0E18EDF765009E0ECE /* InfoPlist.strings in Resources */,
 				E8E18E1C18EDF765009E0ECE /* Images.xcassets in Resources */,
 				E8E18E1A18EDF765009E0ECE /* MainMenu.xib in Resources */,
+				E81354FB19040DFC004F376D /* Data.Function.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

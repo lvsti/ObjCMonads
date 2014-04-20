@@ -90,14 +90,6 @@ extern "C" {
 
 // Other monad functions
     
-    // (.) :: (b -> c) -> (a -> b) -> (a -> c)
-    Mapping ComposeR(Mapping mapBC, Mapping mapAB) {
-        return ^id(id value) {
-            return mapBC(mapAB(value));
-        };
-    }
-    
-
     // join :: (Monad m) => m (m a) -> m a
     MonadicValue Join(MonadicValue mmvalue);
     

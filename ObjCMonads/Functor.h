@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Data.Function.h"
 #import "EXTConcreteProtocol.h"
 
-typedef id(^Mapping)(id);
 
 @protocol Functor <NSObject>
 @required

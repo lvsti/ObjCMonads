@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "Functor.h"
 #import "Monad.h"
+#import "TypeCluster.h"
+
+@class List;
 
 
-@interface Maybe : NSObject<Monad, Functor, NSCopying>
+@interface Maybe : TypeCluster<Monad, Functor, NSCopying>
+
++ (Maybe*)just:(id)value;
++ (Maybe*)nothing;
 
 @end
 
@@ -21,8 +27,35 @@ extern "C" {
     
     Maybe* Just(id value);
     Maybe* Nothing();
-    BOOL IsJust(Maybe* m);
-    id FromJust(Maybe* m);
+    
+// Functions over Maybe
+
+    // maybe :: b -> (a -> b) -> Maybe a -> b
+    id WithMaybe(id defValue, Mapping func, Maybe* mvalue);
+
+    // isJust :: Maybe a -> Bool
+    BOOL IsJust(Maybe* mvalue);
+    
+    // isNothing :: Maybe a -> Bool
+    BOOL IsNothing(Maybe* mvalue);
+    
+    // fromJust :: Maybe a -> a
+    id FromJust(Maybe* mvalue);
+    
+    // fromMaybe :: a -> Maybe a -> a
+    id FromMaybe(id defValue, Maybe* mvalue);
+    
+    // maybeToList :: Maybe a -> [a]
+    List* MaybeToList(Maybe* mvalue);
+
+    // listToMaybe :: [a] -> Maybe a
+    Maybe* ListToMaybe(List* values);
+    
+    // catMaybes :: [Maybe a] -> [a]
+    List* CatMaybes(List* mvalues);
+
+    // mapMaybe :: (a -> Maybe b) -> [a] -> [b]
+    List* MapMaybe(Maybe*(^func)(id), List* values);
     
 #ifdef __cplusplus
 }

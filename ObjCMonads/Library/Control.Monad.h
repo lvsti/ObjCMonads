@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 #import "Functor.h"
 #import "List.h"
-#import "Maybe.h"
+#import "Data.Maybe.h"
 #import "Monad.h"
 #import "Tuple.h"
 

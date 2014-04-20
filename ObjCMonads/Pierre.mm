@@ -7,7 +7,7 @@
 //
 
 #import "Pierre.h"
-#import "Maybe.h"
+#import "Data.Maybe.h"
 #import "Tuple.h"
 
 

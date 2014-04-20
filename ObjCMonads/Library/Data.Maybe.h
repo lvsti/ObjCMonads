@@ -1,10 +1,13 @@
 //
-//  Maybe.h
+//  Data.Maybe.h
 //  ObjCMonads
 //
 //  Created by Tamas Lustyik on 2014.04.05..
 //  Copyright (c) 2014 LKXF. All rights reserved.
 //
+
+#ifndef DATA_MAYBE_H
+#define DATA_MAYBE_H
 
 #import <Foundation/Foundation.h>
 #import "Functor.h"
@@ -60,4 +63,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
+
+#endif // DATA_MAYBE_H
 

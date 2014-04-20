@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "List.h"
-#import "Maybe.h"
+#import "Data.Maybe.h"
 #import "State.h"
 #import "Writer.h"
 #import "NSString+Monoid.h"

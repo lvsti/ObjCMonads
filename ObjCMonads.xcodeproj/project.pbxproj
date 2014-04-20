@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E81354FB19040DFC004F376D /* Data.Function.m in Resources */ = {isa = PBXBuildFile; fileRef = E81354FA19040DFC004F376D /* Data.Function.m */; };
+		E81354FE190417EA004F376D /* TypedCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = E81354FD190417EA004F376D /* TypedCluster.m */; };
 		E816ED6718F04B9C00481229 /* CppMonad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6518F04B9C00481229 /* CppMonad.cpp */; };
 		E816ED6B18F05D8500481229 /* Maybe.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6A18F05D8500481229 /* Maybe.m */; };
 		E816ED6E18F05F9F00481229 /* Either.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6D18F05F9F00481229 /* Either.m */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		E81354F919040DFC004F376D /* Data.Function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.Function.h; sourceTree = "<group>"; };
 		E81354FA19040DFC004F376D /* Data.Function.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.Function.m; sourceTree = "<group>"; };
+		E81354FC190417EA004F376D /* TypedCluster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypedCluster.h; sourceTree = "<group>"; };
+		E81354FD190417EA004F376D /* TypedCluster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypedCluster.m; sourceTree = "<group>"; };
 		E816ED6518F04B9C00481229 /* CppMonad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CppMonad.cpp; sourceTree = "<group>"; };
 		E816ED6618F04B9C00481229 /* CppMonad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CppMonad.h; sourceTree = "<group>"; };
 		E816ED6818F05D6300481229 /* Monad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Monad.h; path = ObjCMonads/Monad.h; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 				E8B6E98D18F3316C0026B4ED /* Pierre.mm */,
 				E8B6E99618F495A70026B4ED /* AKnightsQuest.h */,
 				E8B6E99718F495A70026B4ED /* AKnightsQuest.mm */,
+				E81354FC190417EA004F376D /* TypedCluster.h */,
+				E81354FD190417EA004F376D /* TypedCluster.m */,
 			);
 			path = ObjCMonads;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				E83CDB4618F1A48300FB7004 /* NSString+Monoid.m in Sources */,
 				E83CDB4818F1ADB100FB7004 /* Monad.m in Sources */,
 				E83CDB3B18F14E3700FB7004 /* Reader.m in Sources */,
+				E81354FE190417EA004F376D /* TypedCluster.m in Sources */,
 				E8B6E98B18F327220026B4ED /* Monoid.m in Sources */,
 				E8B6E99118F337440026B4ED /* ObjCObject+Monad.mm in Sources */,
 				E8B6E98E18F3316C0026B4ED /* Pierre.mm in Sources */,

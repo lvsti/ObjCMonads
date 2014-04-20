@@ -9,6 +9,16 @@
 #import "Writer.h"
 #import "NSObject+Subclass.h"
 
+enum RecordFields {
+    kRecResult = 0,
+    kRecOutput = 1
+};
+
+enum TypeParameters {
+    kTPResultType = 0,
+    kTPOutputType = 1
+};
+
 
 Record MkRecord(Result result, Output output) {
     assert(result);
@@ -21,26 +31,12 @@ Record MkRecord(Result result, Output output) {
 
 @property (nonatomic, copy, readwrite) Record record;
 - (instancetype)initWithRecord:(Record)rec;
-+ (Class)outputClass;
 
 @end
 
 
 Writer* MkWriter(Record rec) {
-    Class class = [rec[1] class];
-    struct SelBlockPair impls[] = {
-        { @selector(outputClass), BLOCK_CAST ^id(id self) { return class; } },
-        { 0, 0 }
-    };
-    
-    NSString* className = [NSString stringWithFormat:@"Writer_%@",
-                           NSStringFromClass(class)];
-    __strong Class newClass = [Writer newSubclassNamed:className
-                                             protocols:NULL
-                                         instanceImpls:NULL
-                                            classImpls:impls];
-    
-    return [[newClass alloc] initWithRecord:rec];
+    return [[Writer alloc] initWithRecord:rec];
 }
 
 Record RunWriter(Writer* m) {
@@ -48,38 +44,42 @@ Record RunWriter(Writer* m) {
 }
 
 Writer* Tell(Output output) {
-    return MkWriter(MkRecord([NSNull null], output));
+    return MkWriter(MkRecord(MkUnit(), output));
 }
 
 Writer* Listen(Writer* m) {
     Record rec = RunWriter(m);
-    return MkWriter(MkRecord(rec, rec[1]));
+    return MkWriter(MkRecord(rec, rec[kRecOutput]));
 }
 
 Writer* ListenS(OutputSelector sel, Writer* m) {
     Record rec = RunWriter(m);
-    Record srec = MkRecord(rec[0], sel(rec[1]));
-    return MkWriter(MkRecord(srec, rec[1]));
+    Record srec = MkRecord(rec[kRecResult], sel(rec[kRecOutput]));
+    return MkWriter(MkRecord(srec, rec[kRecOutput]));
 }
 
 Writer* Pass(Writer* m) {
     Record rec = RunWriter(m);
-    Record result = rec[0];
-    OutputModifier mod = result[1];
-    return MkWriter(MkRecord(result[0], mod(rec[1])));
+    Record result = rec[kRecResult];
+    OutputModifier mod = result[kRecOutput];
+    return MkWriter(MkRecord(result[kRecResult], mod(rec[kRecOutput])));
 }
 
 Writer* Censor(OutputModifier mod, Writer* m) {
     Record rec = RunWriter(m);
-    return MkWriter(MkRecord(rec[0], mod(rec[1])));
+    return MkWriter(MkRecord(rec[kRecResult], mod(rec[kRecOutput])));
 }
 
 
 @implementation Writer
 
 - (instancetype)initWithRecord:(Record)rec {
-    assert(rec.size == 2);
-    self = [super init];
+    assert([[rec class] clusterClass] == [Tuple class]);
+    assert([[[rec class] typeParameters] count] == 2);
+    assert([rec[kRecOutput] conformsToProtocol:@protocol(Monoid)]);
+    
+    self = [super initWithClusterClass:[Writer class]
+                            parameters:@[rec[kRecResult], rec[kRecOutput]]];
     if (self) {
         self.record = rec;
     }
@@ -88,11 +88,6 @@ Writer* Censor(OutputModifier mod, Writer* m) {
 
 - (id)copyWithZone:(NSZone*)zone {
     return self;
-}
-
-+ (Class)outputClass {
-    assert(NO);
-    return nil;
 }
 
 - (NSString*)description {
@@ -106,7 +101,7 @@ Writer* Censor(OutputModifier mod, Writer* m) {
 
 + (id<Functor>(^)(Mapping, id<Functor>))fmap {
     return ^id(Mapping map, Writer* ftor) {
-        return MkWriter(MkRecord(map(ftor.record[0]), ftor.record[1]));
+        return MkWriter(MkRecord(map(ftor.record[kRecResult]), ftor.record[kRecOutput]));
     };
 }
 
@@ -115,15 +110,15 @@ Writer* Censor(OutputModifier mod, Writer* m) {
 + (MonadicValue(^)(MonadicValue, Continuation))bind {
     return ^Writer*(Writer* mvalue, Continuation cont) {
         Record rec0 = RunWriter(mvalue);
-        Record rec1 = RunWriter((Writer*)cont(rec0[0], self));
-        Class monoidClass = [rec0[1] class];
-        Output jointOutput = [monoidClass mappend](rec0[1], rec1[1]);
-        return MkWriter(MkRecord(rec1[0], jointOutput));
+        Record rec1 = RunWriter((Writer*)cont(rec0[kRecResult], self));
+        Class monoidClass = [rec0[kRecOutput] class];
+        Output jointOutput = [monoidClass mappend](rec0[kRecOutput], rec1[kRecOutput]);
+        return MkWriter(MkRecord(rec1[kRecOutput], jointOutput));
     };
 }
 
 + (MonadicValue(^)(id))unit {
-    Class class = [self outputClass];
+    Class class = [self typeParameters][kTPOutputType];
     return ^Writer*(id value) {
         return MkWriter(MkRecord(value, [class mempty]()));
     };

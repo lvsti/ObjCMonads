@@ -11,6 +11,7 @@
 #import "Monad.h"
 #import "Monoid.h"
 #import "Tuple.h"
+#import "TypeCluster.h"
 
 typedef id Result;
 typedef id<Monoid> Output;
@@ -19,7 +20,7 @@ typedef id(^OutputSelector)(Output);
 typedef Output(^OutputModifier)(Output);
 
 
-@interface Writer : NSObject<Monad, Functor, NSCopying>
+@interface Writer : TypeCluster<Monad, Functor, NSCopying>
 
 @end
 

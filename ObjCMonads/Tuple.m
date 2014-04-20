@@ -10,43 +10,77 @@
 
 
 @interface Tuple ()
-@property (nonatomic, copy, readwrite) NSArray* objects;
+@property (nonatomic, copy) NSArray* objects;
 @end
 
+
 Tuple* MkUnit() {
-    return [[Tuple alloc] initWithObjectsFromArray:@[]];
+    return [Tuple unit];
 }
 
 Tuple* MkPair(id a, id b) {
-    return [[Tuple alloc] initWithObjectsFromArray:@[a,b]];
+    return [Tuple pair:a :b];
 }
 
 id Fst(Tuple* tuple) {
+    assert([[tuple class] clusterClass] == [Tuple class]);
+    assert([[[tuple class] typeParameters] count] == 2);
     return tuple[0];
 }
 
 id Snd(Tuple* tuple) {
+    assert([[tuple class] clusterClass] == [Tuple class]);
+    assert([[[tuple class] typeParameters] count] == 2);
     return tuple[1];
 }
 
 
 @implementation Tuple
 
-- (instancetype)initWithObjectsFromArray:(NSArray*)array {
-    assert(array);
-    self = [super init];
++ (Tuple*)unit {
+    return [[Tuple alloc] initWithObjectsFromArray:@[]];
+}
+
++ (Tuple*)pair:(id)a :(id)b {
+    assert(a && b);
+    return [[Tuple alloc] initWithObjectsFromArray:@[a, b]];
+}
+
++ (Tuple*)tupleWithObjects:(id)firstObj, ... {
+    NSMutableArray* params = [NSMutableArray array];
+    
+    if (firstObj) {
+        [params addObject:firstObj];
+        
+        va_list args;
+        va_start(args, firstObj);
+        id obj = nil;
+        
+        while ((obj = va_arg(args, id))) {
+            [params addObject:obj];
+        }
+        
+        va_end(args);
+    }
+
+    return [self tupleWithObjectsFromArray:params];
+}
+
++ (Tuple*)tupleWithObjectsFromArray:(NSArray*)objects {
+    assert(objects);
+    return [[Tuple alloc] initWithObjectsFromArray:objects];
+}
+
+- (instancetype)initWithObjectsFromArray:(NSArray*)objects {
+    self = [super initWithClusterClass:[Tuple class] parameters:objects];
     if (self) {
-        _objects = array;
+        self.objects = objects;
     }
     return self;
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {
     return _objects[index];
-}
-
-- (int)size {
-    return (int)[_objects count];
 }
 
 - (id)copyWithZone:(NSZone*)zone {

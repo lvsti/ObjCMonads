@@ -7,15 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TypeCluster.h"
 
 #define Pair(fst_type, snd_type)    Tuple*
 
 
-@interface Tuple : NSObject<NSCopying>
+@interface Tuple : TypeCluster<NSCopying>
 
-@property (nonatomic, assign, readonly) int size;
++ (Tuple*)unit;
++ (Tuple*)pair:(id)a :(id)b;
++ (Tuple*)tupleWithObjects:(id)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
++ (Tuple*)tupleWithObjectsFromArray:(NSArray*)objects;
 
-- (instancetype)initWithObjectsFromArray:(NSArray*)array;
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
 
 @end
@@ -25,10 +28,10 @@
 extern "C" {
 #endif
     
-    Tuple* MkUnit();
-    Tuple* MkPair(id a, id b);
-    id Fst(Tuple* tuple);
-    id Snd(Tuple* tuple);
+    Tuple OF()* MkUnit();
+    Tuple OF(a, b)* MkPair(id a, id b);
+    id Fst(Tuple OF(a, b)* tuple);
+    id Snd(Tuple OF(a, b)* tuple);
     
 #ifdef __cplusplus
 }

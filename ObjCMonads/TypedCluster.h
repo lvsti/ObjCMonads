@@ -11,7 +11,7 @@
 @interface TypedCluster : NSObject
 
 - (instancetype)initWithClusterClass:(Class)clusterClass
-                      typeParameters:(NSArray*)typeParams;
+                          parameters:(NSArray*)params;
 
 + (Class)clusterClass;
 + (NSArray*)typeParameters;

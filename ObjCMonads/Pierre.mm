@@ -8,7 +8,7 @@
 
 #import "Pierre.h"
 #import "Data.Maybe.h"
-#import "Tuple.h"
+#import "Data.Tuple.h"
 
 
 @interface Pole : NSObject

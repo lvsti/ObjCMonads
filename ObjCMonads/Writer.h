@@ -10,7 +10,7 @@
 #import "Functor.h"
 #import "Monad.h"
 #import "Monoid.h"
-#import "Tuple.h"
+#import "Data.Tuple.h"
 #import "TypeCluster.h"
 
 typedef id Result;

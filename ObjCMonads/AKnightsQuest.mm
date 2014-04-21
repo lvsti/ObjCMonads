@@ -11,7 +11,7 @@
 #import "Control.Monad.h"
 #import "List.h"
 #import "ObjCObject+Monad.h"
-#import "Tuple.h"
+#import "Data.Tuple.h"
 
 typedef Pair(@int, @int) KnightPos;
 

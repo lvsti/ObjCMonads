@@ -8,7 +8,7 @@
 
 #import "Data.Either.h"
 #import "List.h"
-#import "Tuple.h"
+#import "Data.Tuple.h"
 
 
 @interface Either ()

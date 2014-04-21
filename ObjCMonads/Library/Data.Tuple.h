@@ -1,5 +1,5 @@
 //
-//  Tuple.h
+//  Data.Tuple.h
 //  ObjCMonads
 //
 //  Created by Tamas Lustyik on 2014.04.05..

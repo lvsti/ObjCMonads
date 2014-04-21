@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "metamacros.h"
-#import "Tuple.h"
+#import "Data.Tuple.h"
 
 
 #define HOF_KIND(idx, argc)                 metamacro_if_eq(0, idx)(metamacro_if_eq(1, argc)(Function)(HOFunction))(Function)

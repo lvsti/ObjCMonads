@@ -8,7 +8,7 @@
 
 #import "List.h"
 #import "EXTScope.h"
-#import "Tuple.h"
+#import "Data.Tuple.h"
 
 
 // flipped array (head is at the last index)

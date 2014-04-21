@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Functor.h"
 #import "Monad.h"
-#import "Tuple.h"
+#import "Data.Tuple.h"
 
 typedef id TState;
 typedef Tuple*(^Transition)(TState);

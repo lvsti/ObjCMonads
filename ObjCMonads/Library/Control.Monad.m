@@ -7,7 +7,7 @@
 //
 
 #import "Control.Monad.h"
-#import "Tuple.h"
+#import "Data.Tuple.h"
 
 
 MonadicValue BindR(Continuation cont, MonadicValue mvalue) {

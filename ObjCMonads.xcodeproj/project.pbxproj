@@ -12,7 +12,6 @@
 		E8135501190476EF004F376D /* Data.Maybe.m in Sources */ = {isa = PBXBuildFile; fileRef = E8135500190476EF004F376D /* Data.Maybe.m */; };
 		E816ED6718F04B9C00481229 /* CppMonad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6518F04B9C00481229 /* CppMonad.cpp */; };
 		E816ED7118F061D700481229 /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED7018F061D700481229 /* State.m */; };
-		E816ED7418F062EB00481229 /* Tuple.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED7318F062EB00481229 /* Tuple.m */; };
 		E83CDB3718F1348100FB7004 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB3618F1348100FB7004 /* List.m */; };
 		E83CDB3B18F14E3700FB7004 /* Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB3A18F14E3700FB7004 /* Reader.m */; };
 		E83CDB3F18F1781900FB7004 /* Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB3E18F1781900FB7004 /* Writer.m */; };
@@ -40,6 +39,7 @@
 		E8E18E2C18EDF766009E0ECE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8E18E2A18EDF766009E0ECE /* InfoPlist.strings */; };
 		E8E18E2E18EDF766009E0ECE /* ObjCMonadsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E18E2D18EDF766009E0ECE /* ObjCMonadsTests.m */; };
 		E8EEEDF219054CF7007E92E0 /* Data.Either.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EEEDF119054CF7007E92E0 /* Data.Either.m */; };
+		E8EEEDF519055044007E92E0 /* Data.Tuple.m in Sources */ = {isa = PBXBuildFile; fileRef = E8EEEDF419055044007E92E0 /* Data.Tuple.m */; };
 		E8F696D918F5ECDB00347545 /* Control.Monad.m in Sources */ = {isa = PBXBuildFile; fileRef = E8F696D818F5ECDB00347545 /* Control.Monad.m */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +65,6 @@
 		E816ED6818F05D6300481229 /* Monad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Monad.h; path = ObjCMonads/Monad.h; sourceTree = "<group>"; };
 		E816ED6F18F061D700481229 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = State.h; path = ObjCMonads/State.h; sourceTree = "<group>"; };
 		E816ED7018F061D700481229 /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = State.m; path = ObjCMonads/State.m; sourceTree = "<group>"; };
-		E816ED7218F062EB00481229 /* Tuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tuple.h; sourceTree = "<group>"; };
-		E816ED7318F062EB00481229 /* Tuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tuple.m; sourceTree = "<group>"; };
 		E83CDB3518F1348100FB7004 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = List.h; path = ObjCMonads/List.h; sourceTree = "<group>"; };
 		E83CDB3618F1348100FB7004 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = List.m; path = ObjCMonads/List.m; sourceTree = "<group>"; };
 		E83CDB3918F14E3700FB7004 /* Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reader.h; path = ObjCMonads/Reader.h; sourceTree = "<group>"; };
@@ -120,6 +118,8 @@
 		E8E18E2D18EDF766009E0ECE /* ObjCMonadsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCMonadsTests.m; sourceTree = "<group>"; };
 		E8EEEDF019054CF7007E92E0 /* Data.Either.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.Either.h; sourceTree = "<group>"; };
 		E8EEEDF119054CF7007E92E0 /* Data.Either.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.Either.m; sourceTree = "<group>"; };
+		E8EEEDF319055044007E92E0 /* Data.Tuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.Tuple.h; sourceTree = "<group>"; };
+		E8EEEDF419055044007E92E0 /* Data.Tuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data.Tuple.m; sourceTree = "<group>"; };
 		E8F696D718F5ECDB00347545 /* Control.Monad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Control.Monad.h; sourceTree = "<group>"; };
 		E8F696D818F5ECDB00347545 /* Control.Monad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Control.Monad.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,8 +248,6 @@
 				E816ED6618F04B9C00481229 /* CppMonad.h */,
 				E8E18E1B18EDF765009E0ECE /* Images.xcassets */,
 				E8E18E1818EDF765009E0ECE /* MainMenu.xib */,
-				E816ED7218F062EB00481229 /* Tuple.h */,
-				E816ED7318F062EB00481229 /* Tuple.m */,
 				E8B6E98F18F336BD0026B4ED /* ObjCObject.h */,
 				E8B6E99518F338250026B4ED /* ObjCObject+Monad.h */,
 				E8B6E99018F337440026B4ED /* ObjCObject+Monad.mm */,
@@ -311,6 +309,8 @@
 				E81354FA19040DFC004F376D /* Data.Function.m */,
 				E81354FF190476EF004F376D /* Data.Maybe.h */,
 				E8135500190476EF004F376D /* Data.Maybe.m */,
+				E8EEEDF319055044007E92E0 /* Data.Tuple.h */,
+				E8EEEDF419055044007E92E0 /* Data.Tuple.m */,
 			);
 			name = Library;
 			path = ObjCMonads/Library;
@@ -427,8 +427,8 @@
 				E816ED7118F061D700481229 /* State.m in Sources */,
 				E8B6E99418F337CE0026B4ED /* ObjCObject+Monoid.mm in Sources */,
 				E83CDB3F18F1781900FB7004 /* Writer.m in Sources */,
-				E816ED7418F062EB00481229 /* Tuple.m in Sources */,
 				E83CDB3718F1348100FB7004 /* List.m in Sources */,
+				E8EEEDF519055044007E92E0 /* Data.Tuple.m in Sources */,
 				E8E18E1018EDF765009E0ECE /* main.m in Sources */,
 				E8F696D918F5ECDB00347545 /* Control.Monad.m in Sources */,
 				E83CDB4618F1A48300FB7004 /* NSString+Monoid.m in Sources */,

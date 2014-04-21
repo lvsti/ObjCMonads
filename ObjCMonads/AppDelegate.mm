@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Data.Either.h"
 #import "List.h"
 #import "Data.Maybe.h"
 #import "State.h"
@@ -90,9 +91,12 @@ Writer* multWithLog() {
 
 
 // TODO:
+// - beyond free parameters, add support for partially bound types (e.g. (a,a,b))
 // - monad-specific `return` from inline monadic functions
 // - expose continuation argument without nesting: ... >= \a -> fun1 >>= \b -> return (a+b)
 // - typed chaining?
+// - getting rid of monad class param with typed monadic class clusters?
+// - qualified importing of functions? name clashes?
 
 @implementation AppDelegate
 

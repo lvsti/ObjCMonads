@@ -45,12 +45,12 @@ HOF_DEFINE(_Pair, id a, id b, {
 });
 
 // curry :: ((a, b) -> c) -> a -> b -> c
-HOF_DEFINE(Curry, id fnOnPairs, id a, id b, {
+HOF_DEFINE(_Curry, id fnOnPairs, id a, id b, {
     return ((Function)fnOnPairs)(MkPair(a, b));
 });
 
 // uncurry :: (a -> b -> c) -> (a, b) -> c
-HOF_DEFINE(Uncurry, id curriedFn, Tuple* pair, {
+HOF_DEFINE(_Uncurry, id curriedFn, Tuple* pair, {
     return ((id(^)(id, id))curriedFn)(pair[0], pair[1]);
 });
 

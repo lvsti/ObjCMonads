@@ -47,10 +47,10 @@ extern "C" {
     HOF_DECLARE(_Pair, id a, id b);
     
     // curry :: ((a, b) -> c) -> a -> b -> c
-    HOF_DECLARE(Curry, id pairFn, id a, id b);
+    HOF_DECLARE(_Curry, id pairFn, id a, id b);
     
     // uncurry :: (a -> b -> c) -> (a, b) -> c
-    HOF_DECLARE(Uncurry, id binFn, Tuple* pair);
+    HOF_DECLARE(_Uncurry, id binFn, Tuple* pair);
     
 #ifdef __cplusplus
 }

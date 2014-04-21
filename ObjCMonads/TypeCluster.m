@@ -9,6 +9,30 @@
 #import "TypeCluster.h"
 #import <objc/runtime.h>
 
+
+static id sharedFreeParameter = nil;
+
+@interface TCFreeParameterObj : NSObject
++ (instancetype)instance;
+@end
+
+@implementation TCFreeParameterObj
+
++ (void)initialize {
+    sharedFreeParameter = [TCFreeParameterObj new];
+}
+
++ (instancetype)instance {
+    return sharedFreeParameter;
+}
+
+@end
+
+id TCFreeParameter() {
+    return [TCFreeParameterObj instance];
+}
+
+
 static const char* kClusterClassKey = "TypedCluster.clusterClass";
 static const char* kTypeParametersKey = "TypedCluster.typeParameters";
 
@@ -92,6 +116,12 @@ NSString* StringFromBlockSignature(const char* rawsig) {
     NSMutableArray* typeParams = [NSMutableArray arrayWithCapacity:[params count]];
     NSMutableString* typeSpec = [NSMutableString string];
     [params enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (obj == TCFreeParameter()) {
+            [typeSpec appendString:@"_(*)"];
+            [typeParams addObject:[obj class]];
+            return;
+        }
+        
         [typeSpec appendString:@"_("];
 
         // make some foundation class clusters decay into the abstract type
@@ -139,6 +169,53 @@ NSString* StringFromBlockSignature(const char* rawsig) {
 + (NSArray*)typeParameters {
     return objc_getAssociatedObject(self, kTypeParametersKey);
 }
+
++ (BOOL)isCompatibleWithClass:(Class)otherClass {
+    assert(otherClass);
+    if (self == otherClass) {
+        return YES;
+    }
+    
+    if (![(id)otherClass respondsToSelector:@selector(clusterClass)] ||
+        ![(id)otherClass respondsToSelector:@selector(typeParameters)]) {
+        return NO;
+    }
+    
+    if ([self clusterClass] != [otherClass clusterClass]) {
+        return NO;
+    }
+    
+    // they are in the same cluster, try to match type parameters
+    if ([[self typeParameters] count] != [[otherClass typeParameters] count]) {
+        return NO;
+    }
+    
+    __block BOOL isCompatible = YES;
+    [[self typeParameters] enumerateObjectsUsingBlock:^(id type, NSUInteger idx, BOOL *stop) {
+        if (type == [TCFreeParameter() class]) {
+            return;
+        }
+
+        id otherType = [otherClass typeParameters][idx];
+        if (otherType == [TCFreeParameter() class]) {
+            return;
+        }
+        
+        if ([type respondsToSelector:@selector(isCompatibleWithClass:)] &&
+            [otherType respondsToSelector:@selector(isCompatibleWithClass:)]) {
+            isCompatible = [(Class)type isCompatibleWithClass:otherType];
+        } else {
+            isCompatible = NO;
+        }
+        
+        if (!isCompatible) {
+            *stop = YES;
+        }
+    }];
+    
+    return isCompatible;
+}
+
 
 @end
 

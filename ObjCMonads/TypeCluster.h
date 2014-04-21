@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+extern id TCFreeParameter();
+
 @interface TypeCluster : NSObject
 
 - (instancetype)initWithClusterClass:(Class)clusterClass
@@ -15,5 +18,7 @@
 
 + (Class)clusterClass;
 + (NSArray*)typeParameters;
+
++ (BOOL)isCompatibleWithClass:(Class)otherClass;
 
 @end

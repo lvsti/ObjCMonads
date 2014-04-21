@@ -116,7 +116,7 @@ List* MapMaybe(Maybe*(^func)(id), List* values) {
 }
 
 - (instancetype)initWithNothing {
-    self = [super initWithClusterClass:[Maybe class] parameters:@[]];
+    self = [super initWithClusterClass:[Maybe class] parameters:@[TCFreeParameter()]];
     if (self) {
         _isJust = NO;
     }
@@ -151,12 +151,12 @@ List* MapMaybe(Maybe*(^func)(id), List* values) {
         return NO;
     }
     
-    if ([self class] != [other class]) {
+    if (![[self class] isCompatibleWithClass:[other class]]) {
         return NO;
     }
 
     // nothings ruled out by this point
-    return [_value isEqual:((Maybe*)other).value];
+    return _isJust == ((Maybe*)other).isJust && [_value isEqual:((Maybe*)other).value];
 }
 
 - (NSString*)description {

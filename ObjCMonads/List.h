@@ -10,7 +10,8 @@
 #import "Functor.h"
 #import "Monad.h"
 #import "Monoid.h"
-#import "Tuple.h"
+
+@class Tuple;
 
 typedef id(^ReduceStepL)(id accum, id obj);
 typedef id(^ReduceStepR)(id obj, id accum);

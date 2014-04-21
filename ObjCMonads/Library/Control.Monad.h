@@ -14,7 +14,6 @@
 #import "List.h"
 #import "Data.Maybe.h"
 #import "Monad.h"
-#import "Tuple.h"
 
 
 @protocol MonadPlus <Monad>

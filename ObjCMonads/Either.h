@@ -10,6 +10,8 @@
 #import "Functor.h"
 #import "Monad.h"
 
+@class List;
+@class Tuple;
 
 @interface Either : NSObject<Monad, Functor, NSCopying>
 

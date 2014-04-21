@@ -34,6 +34,20 @@ id Snd(Tuple* tuple) {
     return tuple[1];
 }
 
+id Curry(id(^func)(Tuple*), id a, id b) {
+    return func([Tuple pair:a :b]);
+}
+
+// uncurry :: (a -> b -> c) -> ((a, b) -> c)
+id Uncurry(id(^func)(id, id), Tuple* pair) {
+    return func(pair[0], pair[1]);
+}
+
+// swap :: (a, b) -> (b, a)
+Tuple* Swap(Tuple* pair) {
+    return [Tuple pair:pair[1] :pair[0]];
+}
+
 
 @implementation Tuple
 

@@ -30,8 +30,21 @@ extern "C" {
     
     Tuple OF()* MkUnit();
     Tuple OF(a, b)* MkPair(id a, id b);
+    
+    // fst :: (a, b) -> a
     id Fst(Tuple OF(a, b)* tuple);
+    
+    // snd :: (a, b) -> b
     id Snd(Tuple OF(a, b)* tuple);
+
+    // curry :: ((a, b) -> c) -> a -> b -> c
+    id Curry(id(^func)(Tuple*), id a, id b);
+
+    // uncurry :: (a -> b -> c) -> ((a, b) -> c)
+    id Uncurry(id(^func)(id, id), Tuple* pair);
+
+    // swap :: (a, b) -> (b, a)
+    Tuple* Swap(Tuple* pair);
     
 #ifdef __cplusplus
 }

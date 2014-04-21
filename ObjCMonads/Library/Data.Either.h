@@ -1,5 +1,5 @@
 //
-//  Either.h
+//  Data.Either.h
 //  ObjCMonads
 //
 //  Created by Tamas Lustyik on 2014.04.05..

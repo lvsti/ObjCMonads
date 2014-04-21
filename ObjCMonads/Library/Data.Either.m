@@ -1,12 +1,12 @@
 //
-//  Either.m
+//  Data.Either.m
 //  ObjCMonads
 //
 //  Created by Tamas Lustyik on 2014.04.05..
 //  Copyright (c) 2014 LKXF. All rights reserved.
 //
 
-#import "Either.h"
+#import "Data.Either.h"
 #import "List.h"
 #import "Tuple.h"
 

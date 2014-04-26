@@ -13,6 +13,9 @@
 		E816ED6E18F05F9F00481229 /* Either.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6D18F05F9F00481229 /* Either.m */; };
 		E816ED7118F061D700481229 /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED7018F061D700481229 /* State.m */; };
 		E816ED7418F062EB00481229 /* Tuple.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED7318F062EB00481229 /* Tuple.m */; };
+		E8194B53190C4D7B0072EC6F /* NSArray+Functor.m in Sources */ = {isa = PBXBuildFile; fileRef = E8194B52190C4D7B0072EC6F /* NSArray+Functor.m */; };
+		E8194B56190C4F710072EC6F /* NSDictionary+Functor.m in Sources */ = {isa = PBXBuildFile; fileRef = E8194B55190C4F710072EC6F /* NSDictionary+Functor.m */; };
+		E8194B59190C503A0072EC6F /* NSSet+Functor.m in Sources */ = {isa = PBXBuildFile; fileRef = E8194B58190C503A0072EC6F /* NSSet+Functor.m */; };
 		E83CDB3718F1348100FB7004 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB3618F1348100FB7004 /* List.m */; };
 		E83CDB3B18F14E3700FB7004 /* Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB3A18F14E3700FB7004 /* Reader.m */; };
 		E83CDB3F18F1781900FB7004 /* Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB3E18F1781900FB7004 /* Writer.m */; };
@@ -66,6 +69,12 @@
 		E816ED7018F061D700481229 /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = State.m; path = ObjCMonads/State.m; sourceTree = "<group>"; };
 		E816ED7218F062EB00481229 /* Tuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tuple.h; sourceTree = "<group>"; };
 		E816ED7318F062EB00481229 /* Tuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tuple.m; sourceTree = "<group>"; };
+		E8194B51190C4D7B0072EC6F /* NSArray+Functor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functor.h"; sourceTree = "<group>"; };
+		E8194B52190C4D7B0072EC6F /* NSArray+Functor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functor.m"; sourceTree = "<group>"; };
+		E8194B54190C4F710072EC6F /* NSDictionary+Functor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Functor.h"; sourceTree = "<group>"; };
+		E8194B55190C4F710072EC6F /* NSDictionary+Functor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Functor.m"; sourceTree = "<group>"; };
+		E8194B57190C503A0072EC6F /* NSSet+Functor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+Functor.h"; sourceTree = "<group>"; };
+		E8194B58190C503A0072EC6F /* NSSet+Functor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+Functor.m"; sourceTree = "<group>"; };
 		E83CDB3518F1348100FB7004 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = List.h; path = ObjCMonads/List.h; sourceTree = "<group>"; };
 		E83CDB3618F1348100FB7004 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = List.m; path = ObjCMonads/List.m; sourceTree = "<group>"; };
 		E83CDB3918F14E3700FB7004 /* Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reader.h; path = ObjCMonads/Reader.h; sourceTree = "<group>"; };
@@ -256,8 +265,14 @@
 				E8B6E99018F337440026B4ED /* ObjCObject+Monad.mm */,
 				E8B6E99218F337CE0026B4ED /* ObjCObject+Monoid.h */,
 				E8B6E99318F337CE0026B4ED /* ObjCObject+Monoid.mm */,
+				E8194B51190C4D7B0072EC6F /* NSArray+Functor.h */,
+				E8194B52190C4D7B0072EC6F /* NSArray+Functor.m */,
+				E8194B54190C4F710072EC6F /* NSDictionary+Functor.h */,
+				E8194B55190C4F710072EC6F /* NSDictionary+Functor.m */,
 				E83CDB4118F19F0700FB7004 /* NSObject+Subclass.h */,
 				E83CDB4218F19F0700FB7004 /* NSObject+Subclass.m */,
+				E8194B57190C503A0072EC6F /* NSSet+Functor.h */,
+				E8194B58190C503A0072EC6F /* NSSet+Functor.m */,
 				E83CDB4418F1A48300FB7004 /* NSString+Monoid.h */,
 				E83CDB4518F1A48300FB7004 /* NSString+Monoid.m */,
 				E8B6E98418F1E5100026B4ED /* HOFPrelude.h */,
@@ -412,6 +427,8 @@
 				E83CDB6B18F1BB8200FB7004 /* EXTScope.m in Sources */,
 				E816ED6B18F05D8500481229 /* Maybe.m in Sources */,
 				E83CDB4A18F1B5C600FB7004 /* Functor.m in Sources */,
+				E8194B53190C4D7B0072EC6F /* NSArray+Functor.m in Sources */,
+				E8194B59190C503A0072EC6F /* NSSet+Functor.m in Sources */,
 				E8B6E99818F495A70026B4ED /* AKnightsQuest.mm in Sources */,
 				E8B6E98618F1E5100026B4ED /* HOFPrelude.m in Sources */,
 				E8E18E1718EDF765009E0ECE /* AppDelegate.mm in Sources */,
@@ -430,6 +447,7 @@
 				E83CDB4818F1ADB100FB7004 /* Monad.m in Sources */,
 				E83CDB3B18F14E3700FB7004 /* Reader.m in Sources */,
 				E8B6E98B18F327220026B4ED /* Monoid.m in Sources */,
+				E8194B56190C4F710072EC6F /* NSDictionary+Functor.m in Sources */,
 				E8B6E99118F337440026B4ED /* ObjCObject+Monad.mm in Sources */,
 				E8B6E98E18F3316C0026B4ED /* Pierre.mm in Sources */,
 				E816ED6E18F05F9F00481229 /* Either.m in Sources */,

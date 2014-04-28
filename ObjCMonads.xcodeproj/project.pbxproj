@@ -27,6 +27,12 @@
 		E83CDB6918F1BB8200FB7004 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5918F1BB8200FB7004 /* EXTRuntimeExtensions.m */; };
 		E83CDB6B18F1BB8200FB7004 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5D18F1BB8200FB7004 /* EXTScope.m */; };
 		E86B6541190EF35800F7916E /* MABlockForwarding.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B653E190EF35800F7916E /* MABlockForwarding.m */; };
+		E86B65B51910520700F7916E /* BlockFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B65AA1910520700F7916E /* BlockFunction.m */; };
+		E86B65B61910520700F7916E /* Function.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B65AC1910520700F7916E /* Function.m */; };
+		E86B65B71910520700F7916E /* MethodFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B65AE1910520700F7916E /* MethodFunction.m */; };
+		E86B65B81910520700F7916E /* NSInvocation+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B65B01910520700F7916E /* NSInvocation+Extensions.m */; };
+		E86B65B91910520700F7916E /* NSInvocation+Function.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B65B21910520700F7916E /* NSInvocation+Function.m */; };
+		E86B65BA1910520700F7916E /* PointerFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B65B41910520700F7916E /* PointerFunction.m */; };
 		E8B6E98618F1E5100026B4ED /* HOFPrelude.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98518F1E5100026B4ED /* HOFPrelude.m */; };
 		E8B6E98B18F327220026B4ED /* Monoid.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98A18F327220026B4ED /* Monoid.m */; };
 		E8B6E98E18F3316C0026B4ED /* Pierre.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8B6E98D18F3316C0026B4ED /* Pierre.mm */; };
@@ -99,6 +105,18 @@
 		E83CDB6118F1BB8200FB7004 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		E86B653D190EF35800F7916E /* MABlockForwarding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MABlockForwarding.h; sourceTree = "<group>"; };
 		E86B653E190EF35800F7916E /* MABlockForwarding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MABlockForwarding.m; sourceTree = "<group>"; };
+		E86B65A91910520700F7916E /* BlockFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockFunction.h; sourceTree = "<group>"; };
+		E86B65AA1910520700F7916E /* BlockFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockFunction.m; sourceTree = "<group>"; };
+		E86B65AB1910520700F7916E /* Function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Function.h; sourceTree = "<group>"; };
+		E86B65AC1910520700F7916E /* Function.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Function.m; sourceTree = "<group>"; };
+		E86B65AD1910520700F7916E /* MethodFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodFunction.h; sourceTree = "<group>"; };
+		E86B65AE1910520700F7916E /* MethodFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodFunction.m; sourceTree = "<group>"; };
+		E86B65AF1910520700F7916E /* NSInvocation+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Extensions.h"; sourceTree = "<group>"; };
+		E86B65B01910520700F7916E /* NSInvocation+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+Extensions.m"; sourceTree = "<group>"; };
+		E86B65B11910520700F7916E /* NSInvocation+Function.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Function.h"; sourceTree = "<group>"; };
+		E86B65B21910520700F7916E /* NSInvocation+Function.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+Function.m"; sourceTree = "<group>"; };
+		E86B65B31910520700F7916E /* PointerFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointerFunction.h; sourceTree = "<group>"; };
+		E86B65B41910520700F7916E /* PointerFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointerFunction.m; sourceTree = "<group>"; };
 		E8B6E98418F1E5100026B4ED /* HOFPrelude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HOFPrelude.h; sourceTree = "<group>"; };
 		E8B6E98518F1E5100026B4ED /* HOFPrelude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HOFPrelude.m; sourceTree = "<group>"; };
 		E8B6E98A18F327220026B4ED /* Monoid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Monoid.m; path = ObjCMonads/Monoid.m; sourceTree = "<group>"; };
@@ -219,9 +237,30 @@
 			path = MABlockForwarding;
 			sourceTree = "<group>";
 		};
+		E86B65A8191051D900F7916E /* Currying */ = {
+			isa = PBXGroup;
+			children = (
+				E86B65A91910520700F7916E /* BlockFunction.h */,
+				E86B65AA1910520700F7916E /* BlockFunction.m */,
+				E86B65AB1910520700F7916E /* Function.h */,
+				E86B65AC1910520700F7916E /* Function.m */,
+				E86B65AD1910520700F7916E /* MethodFunction.h */,
+				E86B65AE1910520700F7916E /* MethodFunction.m */,
+				E86B65AF1910520700F7916E /* NSInvocation+Extensions.h */,
+				E86B65B01910520700F7916E /* NSInvocation+Extensions.m */,
+				E86B65B11910520700F7916E /* NSInvocation+Function.h */,
+				E86B65B21910520700F7916E /* NSInvocation+Function.m */,
+				E86B65B31910520700F7916E /* PointerFunction.h */,
+				E86B65B41910520700F7916E /* PointerFunction.m */,
+			);
+			name = Currying;
+			path = ObjCMonads/Currying;
+			sourceTree = "<group>";
+		};
 		E8E18DF718EDF764009E0ECE = {
 			isa = PBXGroup;
 			children = (
+				E86B65A8191051D900F7916E /* Currying */,
 				E83CDB4B18F1BB7600FB7004 /* External */,
 				E8F696D618F5ECDB00347545 /* Library */,
 				E83CDB3818F1349D00FB7004 /* Monad */,
@@ -438,18 +477,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				E83CDB6B18F1BB8200FB7004 /* EXTScope.m in Sources */,
+				E86B65B91910520700F7916E /* NSInvocation+Function.m in Sources */,
 				E816ED6B18F05D8500481229 /* Maybe.m in Sources */,
 				E83CDB4A18F1B5C600FB7004 /* Functor.m in Sources */,
 				E8194B53190C4D7B0072EC6F /* NSArray+Functor.m in Sources */,
+				E86B65BA1910520700F7916E /* PointerFunction.m in Sources */,
 				E8194B59190C503A0072EC6F /* NSSet+Functor.m in Sources */,
 				E8B6E99818F495A70026B4ED /* AKnightsQuest.mm in Sources */,
 				E8B6E98618F1E5100026B4ED /* HOFPrelude.m in Sources */,
 				E8E18E1718EDF765009E0ECE /* AppDelegate.mm in Sources */,
 				E83CDB6918F1BB8200FB7004 /* EXTRuntimeExtensions.m in Sources */,
+				E86B65B61910520700F7916E /* Function.m in Sources */,
+				E86B65B81910520700F7916E /* NSInvocation+Extensions.m in Sources */,
 				E816ED6718F04B9C00481229 /* CppMonad.cpp in Sources */,
 				E83CDB4318F19F0700FB7004 /* NSObject+Subclass.m in Sources */,
 				E83CDB6718F1BB8200FB7004 /* EXTConcreteProtocol.m in Sources */,
 				E816ED7118F061D700481229 /* State.m in Sources */,
+				E86B65B51910520700F7916E /* BlockFunction.m in Sources */,
 				E8B6E99418F337CE0026B4ED /* ObjCObject+Monoid.mm in Sources */,
 				E83CDB3F18F1781900FB7004 /* Writer.m in Sources */,
 				E816ED7418F062EB00481229 /* Tuple.m in Sources */,
@@ -465,6 +509,7 @@
 				E8B6E99118F337440026B4ED /* ObjCObject+Monad.mm in Sources */,
 				E8B6E98E18F3316C0026B4ED /* Pierre.mm in Sources */,
 				E816ED6E18F05F9F00481229 /* Either.m in Sources */,
+				E86B65B71910520700F7916E /* MethodFunction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,23 +11,20 @@
 
 @concreteprotocol(Functor)
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
++ (Function*)fmap {
     assert(NO);
     return nil;
 }
 
-+ (id<Functor>(^)(id, id<Functor>))freplace {
-    return ^id<Functor>(id value, id<Functor> ftor) {
-        Mapping m = ^id(id x) { return value; };
-        return [self fmap](m, ftor);
-    };
++ (Function*)freplace {
+    return ComposeR([self fmap], [Function fromPointer:Const objCTypes:FPTR_SIG(id, id)]);
 }
 
-- (id<Functor>(^)(Mapping))fmap {
+- (id<Functor>(^)(Function*))fmap {
     @weakify(self);
-    return ^id<Functor>(Mapping m) {
+    return ^id<Functor>(Function* f) {
         @strongify(self);
-        return [[self class] fmap](m, self);
+        return [[[[self class] fmap] :f] :self];
     };
 }
 

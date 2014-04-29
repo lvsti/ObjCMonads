@@ -10,18 +10,18 @@
 
 @implementation NSSet (Functor)
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
-    return ^NSSet*(Mapping func, NSSet* ftor) {
++ (Function*)fmap {
+    return [Function fromBlock:^NSArray*(Function* func, NSSet* ftor) {
         assert(func);
         assert(ftor);
         NSMutableSet* result = [NSMutableSet setWithCapacity:[ftor count]];
         
         [ftor enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-            [result addObject:func(obj)];
+            [result addObject:[func :obj]];
         }];
         
         return [result copy];
-    };
+    }];
 }
 
 @end

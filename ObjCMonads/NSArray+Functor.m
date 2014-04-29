@@ -10,18 +10,18 @@
 
 @implementation NSArray (Functor)
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
-    return ^NSArray*(Mapping func, NSArray* ftor) {
++ (Function*)fmap {
+    return [Function fromBlock:^NSArray*(Function* func, NSArray* ftor) {
         assert(func);
         assert(ftor);
         NSMutableArray* result = [NSMutableArray arrayWithCapacity:[ftor count]];
 
         [ftor enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [result addObject:func(obj)];
+            [result addObject:[func :obj]];
         }];
         
         return [result copy];
-    };
+    }];
 }
 
 @end

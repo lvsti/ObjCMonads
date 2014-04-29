@@ -68,15 +68,15 @@ State* GetS(StateSelector sel) {
 
 #pragma mark - Functor:
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
-    return ^State*(Mapping map, State* ftor) {
++ (Function*)fmap {
+    return [Function fromBlock:^State*(Function* func, State* ftor) {
         return MkState(^Tuple*(TState state0) {
             Tuple* pair = RunState(ftor, state0);
             id a = pair[0];
             TState state1 = pair[1];
-            return MkPair(map(a), state1);
+            return MkPair([func :a], state1);
         });
-    };
+    }];
 }
 
 #pragma mark - Monad:

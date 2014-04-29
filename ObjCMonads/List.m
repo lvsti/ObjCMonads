@@ -189,10 +189,10 @@ List* ZipWith(id(^zipper)(id, id), List* as, List* bs) {
 
 #pragma mark - Functor:
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
-    return ^List*(Mapping map, List* ftor) {
-        return Map(map, ftor);
-    };
++ (Function*)fmap {
+    return [Function fromBlock:^List*(Function* func, List* ftor) {
+        return Map(func, ftor);
+    }];
 }
 
 #pragma mark - Monad:

@@ -15,14 +15,14 @@
 @required
 
 // fmap :: (a -> b) -> f a -> f b
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap;
++ (Function*)fmap;
 
 @concrete
 
 // (<$) :: a -> f b -> f a
-+ (id<Functor>(^)(id, id<Functor>))freplace;
++ (Function*)freplace;
 
-@property (nonatomic, readonly) id<Functor>(^fmap)(Mapping);
+@property (nonatomic, readonly) id<Functor>(^fmap)(Function*);
 
 @end
 

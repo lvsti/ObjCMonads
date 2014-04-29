@@ -81,10 +81,10 @@ id FromRight(Either* e) {
 
 #pragma mark - Functor:
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
-    return ^Either*(Mapping map, Either* ftor) {
-        return ftor.isLeft? [ftor copy]: Right(map(ftor.right));
-    };
++ (Function*)fmap {
+    return [Function fromBlock:^Either*(Function* func, Either* ftor) {
+        return ftor.isLeft? [ftor copy]: Right([func :ftor.right]);
+    }];
 }
 
 #pragma mark - Monad:

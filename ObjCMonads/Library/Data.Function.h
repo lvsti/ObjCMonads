@@ -7,16 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef id(^Mapping)(id);
+#import "Function.h"
 
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+    // id :: a -> a
+    id Id(id value);
+    
+    // const :: a -> b -> a
+    id Const(id value1, id value2);
+    
     // (.) :: (b -> c) -> (a -> b) -> (a -> c)
-    Mapping ComposeR(Mapping mapBC, Mapping mapAB);
+    Function* ComposeR(Function* fBC, Function* fAB);
 
 #ifdef __cplusplus
 }

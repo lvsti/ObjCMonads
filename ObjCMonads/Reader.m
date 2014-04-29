@@ -60,12 +60,12 @@ Reader* Local(EnvironmentModifier mod, Reader* m) {
 
 #pragma mark - Functor:
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
-    return ^Reader*(Mapping map, Reader* ftor) {
++ (Function*)fmap {
+    return [Function fromBlock:^Reader*(Function* func, Reader* ftor) {
         return MkReader(^id(Environment env) {
-            return map(RunReader(ftor, env));
+            return [func :RunReader(ftor, env)];
         });
-    };
+    }];
 }
 
 #pragma mark - Monad:

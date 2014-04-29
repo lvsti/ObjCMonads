@@ -104,10 +104,10 @@ Writer* Censor(OutputModifier mod, Writer* m) {
 
 #pragma mark - Functor:
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
-    return ^id(Mapping map, Writer* ftor) {
-        return MkWriter(MkRecord(map(ftor.record[0]), ftor.record[1]));
-    };
++ (Function*)fmap {
+    return [Function fromBlock:^Writer*(Function* func, Writer* ftor) {
+        return MkWriter(MkRecord([func :ftor.record[0]], ftor.record[1]));
+    }];
 }
 
 #pragma mark - Monad:

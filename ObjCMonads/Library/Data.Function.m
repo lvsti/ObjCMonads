@@ -9,11 +9,18 @@
 #import "Data.Function.h"
 
 
-// (.) :: (b -> c) -> (a -> b) -> (a -> c)
-Mapping ComposeR(Mapping mapBC, Mapping mapAB) {
-    return ^id(id value) {
-        return mapBC(mapAB(value));
-    };
+id Id(id value) {
+    return value;
+}
+
+id Const(id value1, id value2) {
+    return value1;
+}
+
+Function* ComposeR(Function* fBC, Function* fAB) {
+    return [Function fromBlock:^id(id value) {
+        return [fBC :[fAB :value]];
+    }];
 }
 
 

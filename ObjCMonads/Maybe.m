@@ -74,10 +74,10 @@ id FromJust(Maybe* m) {
 
 #pragma mark - Functor:
 
-+ (id<Functor>(^)(Mapping, id<Functor>))fmap {
-    return ^Maybe*(Mapping map, Maybe* ftor) {
-        return ftor.isJust? Just(map(ftor.value)): [ftor copy];
-    };
++ (Function*)fmap {
+    return [Function fromBlock:^Maybe*(Function* func, Maybe* ftor) {
+        return ftor.isJust? Just([func :ftor.value]): [ftor copy];
+    }];
 }
 
 #pragma mark - Monad:

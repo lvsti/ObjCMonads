@@ -21,10 +21,10 @@
 @required
 
 // mzero :: m a
-+ (id<MonadPlus>(^)())mzero;
++ (id<MonadPlus>)mzero;
 
 // mplus :: m a -> m a -> m a
-+ (id<MonadPlus>(^)(id<MonadPlus>, id<MonadPlus>))mplus;
++ (Function*)mplus;
 
 @end
 

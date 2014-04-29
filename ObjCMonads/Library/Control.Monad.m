@@ -47,16 +47,14 @@ MonadicValue MapM_(Continuation cont, List* values, Class<Monad> m) {
 
 @implementation List (MonadPlus)
 
-+ (id<MonadPlus>(^)())mzero {
-    return ^List*() {
-        return Empty();
-    };
++ (id<MonadPlus>)mzero {
+    return Empty();
 }
 
-+ (id<MonadPlus>(^)(id<MonadPlus>, id<MonadPlus>))mplus {
-    return ^List*(List* list1, List* list2) {
++ (Function*)mplus {
+    return [Function fromBlock:^List*(List* list1, List* list2) {
         return Append(list1, list2);
-    };
+    }];
 }
 
 @end
@@ -64,23 +62,21 @@ MonadicValue MapM_(Continuation cont, List* values, Class<Monad> m) {
 
 @implementation Maybe (MonadPlus)
 
-+ (id<MonadPlus>(^)())mzero {
-    return ^Maybe*() {
-        return Nothing();
-    };
++ (id<MonadPlus>)mzero {
+    return Nothing();
 }
 
-+ (id<MonadPlus>(^)(id<MonadPlus>, id<MonadPlus>))mplus {
-    return ^Maybe*(Maybe* maybe1, Maybe* maybe2) {
++ (Function*)mplus {
+    return [Function fromBlock:^Maybe*(Maybe* maybe1, Maybe* maybe2) {
         return IsJust(maybe1)? maybe1: maybe2;
-    };
+    }];
 }
 
 @end
 
 
 MonadicValue Guard(BOOL value, Class<MonadPlus> m) {
-    return value? [m unit](MkUnit()): [m mzero]();
+    return value? [m unit](MkUnit()): [m mzero];
 }
 
 MonadicValue FilterM(Continuation cont, List* values, Class<Monad> m) {
@@ -258,7 +254,7 @@ MonadicValue Ap(MonadicValue mfunc, MonadicValue mvalue, Class<Monad> m) {
 
 MonadicValue MFilter(BOOL(^pred)(id), MonadicValue mvalue, Class<MonadPlus> m) {
     return mvalue.bind(^MonadicValue(id value, Class m1) {
-        return pred(value)? [m unit](value): [m mzero]();
+        return pred(value)? [m unit](value): [m mzero];
     });
 }
 

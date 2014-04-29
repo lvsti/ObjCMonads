@@ -8,28 +8,33 @@
 
 #import <Foundation/Foundation.h>
 #import "EXTConcreteProtocol.h"
+#import "Function.h"
 
 @protocol Monad;
 
 typedef id<Monad> MonadicValue;
 typedef MonadicValue(^Continuation)(id, Class);
+typedef MonadicValue (*ContFunc)(id);
+
+// function with an extra Class parameter to indicate monadic type
+typedef Function FunctionM;
 
 
 @protocol Monad <NSObject>
 @required
 
 // bind :: m a -> (a -> m b) -> m b
-+ (MonadicValue(^)(MonadicValue, Continuation))bind;
++ (Function*)bind;
 
 // unit :: a -> m a
-+ (MonadicValue(^)(id))unit;
++ (Function*)unit;
 
 @concrete
 
 // bind_ :: m a -> m b -> m b
-+ (MonadicValue(^)(MonadicValue, MonadicValue))bind_;
++ (Function*)bind_;
 
-@property (nonatomic, readonly) MonadicValue (^bind)(Continuation);
+@property (nonatomic, readonly) MonadicValue (^bind)(FunctionM*);
 @property (nonatomic, readonly) MonadicValue (^bind_)(MonadicValue);
 
 @end

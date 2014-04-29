@@ -82,21 +82,21 @@ id FromJust(Maybe* m) {
 
 #pragma mark - Monad:
 
-+ (MonadicValue(^)(MonadicValue, Continuation))bind {
-    return ^MonadicValue(Maybe* mvalue, Continuation cont) {
++ (Function*)bind {
+    return [Function fromBlock:^MonadicValue(Maybe* mvalue, FunctionM* cont) {
         if (mvalue.isJust) {
-            return cont(mvalue.value, self);
+            return [[cont :mvalue.value] :self];
         }
         
         // nothing
         return [mvalue copy];
-    };
+    }];
 }
 
-+ (MonadicValue(^)(id))unit {
-    return ^Maybe*(id value) {
++ (Function*)unit {
+    return [Function fromBlock:^Maybe*(id value) {
         return Just(value);
-    };
+    }];
 }
 
 @end

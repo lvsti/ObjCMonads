@@ -11,27 +11,27 @@
 
 @concreteprotocol(Monad)
 
-+ (MonadicValue(^)(MonadicValue, Continuation))bind {
++ (Function*)bind {
     assert(NO);
     return nil;
 }
 
-+ (MonadicValue(^)(id))unit {
++ (Function*)unit {
     assert(NO);
     return nil;
 }
 
-+ (MonadicValue(^)(MonadicValue, MonadicValue))bind_ {
-    return ^MonadicValue(MonadicValue mvalue0, MonadicValue mvalue1) {
-        return [self bind](mvalue0, ^MonadicValue(id x, Class m) { return mvalue1; });
-    };
++ (Function*)bind_ {
+    return [Function fromBlock:^MonadicValue(MonadicValue mvalue0, MonadicValue mvalue1) {
+        return [[[self bind] :mvalue0] :[Function fromBlock:^MonadicValue(id x, Class m) { return mvalue1; }]];
+    }];
 }
 
-- (MonadicValue(^)(Continuation))bind {
+- (MonadicValue(^)(FunctionM*))bind {
     @weakify(self);
-    return ^MonadicValue(Continuation cont) {
+    return ^MonadicValue(FunctionM* cont) {
         @strongify(self);
-        return [[self class] bind](self, cont);
+        return [[[[self class] bind] :self] :cont];
     };
 }
 
@@ -39,7 +39,7 @@
     @weakify(self);
     return ^MonadicValue(MonadicValue mvalue) {
         @strongify(self);
-        return [[self class] bind](self, ^MonadicValue(id x, Class m) { return mvalue; });
+        return [[[[self class] bind] :self] :[Function fromBlock:^MonadicValue(id x, Class m) { return mvalue; }]];
     };
 }
 

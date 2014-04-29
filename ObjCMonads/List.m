@@ -197,19 +197,19 @@ List* ZipWith(id(^zipper)(id, id), List* as, List* bs) {
 
 #pragma mark - Monad:
 
-+ (MonadicValue(^)(MonadicValue, Continuation))bind {
-    return ^List*(List* mvalue, Continuation cont) {
++ (Function*)bind {
+    return [Function fromBlock:^List*(List* mvalue, Function* cont) {
         Mapping m = ^id(id value) {
             return cont(value, self);
         };
         return Concat(Map(m, mvalue));
-    };
+    }];
 }
 
-+ (MonadicValue(^)(id))unit {
-    return ^List*(id value) {
++ (Function*)unit {
+    return [Function fromBlock:^List*(id value) {
         return Singleton(value);
-    };
+    }];
 }
 
 @end

@@ -70,20 +70,20 @@ Reader* Local(EnvironmentModifier mod, Reader* m) {
 
 #pragma mark - Monad:
 
-+ (MonadicValue(^)(MonadicValue, Continuation))bind {
-    return ^Reader*(Reader* mvalue, Continuation cont) {
++ (Function*)bind {
+    return [Function fromBlock:^Reader*(Reader* mvalue, FunctionM* cont) {
         return MkReader(^id(Environment env) {
-            return RunReader((Reader*)cont(mvalue.computation(env), self), env);
+            return RunReader([[cont :mvalue.computation(env)] :self], env);
         });
-    };
+    }];
 }
 
-+ (MonadicValue(^)(id))unit {
-    return ^Reader*(id value) {
++ (Function*)unit {
+    return [Function fromBlock:^Reader*(id value) {
         return MkReader(^id(Environment env) {
             return value;
         });
-    };
+    }];
 }
 
 

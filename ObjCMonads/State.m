@@ -81,8 +81,8 @@ State* GetS(StateSelector sel) {
 
 #pragma mark - Monad:
 
-+ (MonadicValue(^)(MonadicValue, Continuation))bind {
-    return ^MonadicValue(State* mvalue, Continuation cont) {
++ (Function*)bind {
+    return [Function fromBlock:^MonadicValue(State* mvalue, FunctionM* cont) {
         return MkState(^Tuple*(TState state0) {
             //    m >>= cont  = StateT $ \s -> do
             //        (a, s') <- runStateT m s
@@ -90,17 +90,17 @@ State* GetS(StateSelector sel) {
             Tuple* pair = RunState(mvalue, state0);
             id a = pair[0];
             TState state1 = pair[1];
-            return RunState((State*)cont(a, self), state1);
+            return RunState([[cont :a] :self], state1);
         });
-    };
+    }];
 }
 
-+ (MonadicValue(^)(id))unit {
-    return ^State*(id value) {
++ (Function*)unit {
+    return [Function fromBlock:^State*(id value) {
         return MkState(^Tuple*(TState state) {
             return MkPair(value, state);
         });
-    };
+    }];
 }
 
 

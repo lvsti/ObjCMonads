@@ -89,21 +89,21 @@ id FromRight(Either* e) {
 
 #pragma mark - Monad:
 
-+ (MonadicValue(^)(MonadicValue, Continuation))bind {
-    return ^MonadicValue(Either* mvalue, Continuation cont) {
++ (Function*)bind {
+    return [Function fromBlock:^MonadicValue(Either* mvalue, FunctionM* cont) {
         if (!mvalue.isLeft) {
-            return cont(mvalue.value, self);
+            return [[cont :mvalue.value] :self];
         }
         
         // nothing
         return [mvalue copy];
-    };
+    }];
 }
 
-+ (MonadicValue(^)(id))unit {
-    return ^Either*(id value) {
++ (Function*)unit {
+    return [Function fromBlock:^Either*(id value) {
         return Right(value);
-    };
+    }];
 }
 
 @end

@@ -25,8 +25,6 @@
             value ); \
     }
 
-typedef MonadicValue (*ContFunc)(id);
-
 ObjCObject operator>=(const ObjCObject& mvalue, const ObjCObject& cont);
 ObjCObject operator>=(const ObjCObject& mvalue, ContFunc cont);
 

@@ -12,35 +12,35 @@
 #import "Tuple.h"
 
 
-MonadicValue BindR(Continuation cont, MonadicValue mvalue) {
-    return [[mvalue class] bind](mvalue, cont);
+MonadicValue BindR(FunctionM* cont, MonadicValue mvalue) {
+    return [[[[mvalue class] bind] :mvalue] :cont];
 }
 
 MonadicValue Sequence(List* mvalues, Class<Monad> m) {
     return FoldR(^MonadicValue(MonadicValue obj, MonadicValue accum) {
         return obj.bind(^MonadicValue(id x, Class mx) {
             return accum.bind(^MonadicValue(List* xs, Class mxs) {
-                return [m unit](Cons(x, xs));
+                return [[m unit] :Cons(x, xs)];
             });
         });
-    }, [m unit](Empty()), mvalues);
+    }, [[m unit] :Empty()], mvalues);
 }
 
 MonadicValue Sequence_(List* mvalues, Class m) {
     return FoldR(^id(MonadicValue obj, MonadicValue accum) {
         return obj.bind_(accum);
-    }, [m unit](MkUnit()), mvalues);
+    }, [[m unit] :MkUnit()], mvalues);
 }
 
-MonadicValue MapM(Continuation cont, List* values, Class<Monad> m) {
+MonadicValue MapM(FunctionM* cont, List* values, Class<Monad> m) {
     return Sequence(Map(^id(id x) {
-        return cont(x, m);
+        return [[cont :x] :m];
     }, values), m);
 }
 
-MonadicValue MapM_(Continuation cont, List* values, Class<Monad> m) {
+MonadicValue MapM_(FunctionM* cont, List* values, Class<Monad> m) {
     return Sequence_(Map(^id(id x) {
-        return cont(x, m);
+        return [[cont :x] :m];
     }, values), m);
 }
 
@@ -76,28 +76,28 @@ MonadicValue MapM_(Continuation cont, List* values, Class<Monad> m) {
 
 
 MonadicValue Guard(BOOL value, Class<MonadPlus> m) {
-    return value? [m unit](MkUnit()): [m mzero];
+    return value? [[m unit] :MkUnit()]: [m mzero];
 }
 
-MonadicValue FilterM(Continuation cont, List* values, Class<Monad> m) {
+MonadicValue FilterM(FunctionM* cont, List* values, Class<Monad> m) {
     if (IsEmpty(values)) {
-        return [m unit](Empty());
+        return [[m unit] :Empty()];
     }
     
     id x = Head(values);
-    return cont(x, m).bind(^MonadicValue(id flagObj, Class _) {
+    return ((MonadicValue)[[cont :x] :m]).bind(^MonadicValue(id flagObj, Class _) {
         BOOL flag = [flagObj boolValue];
         return FilterM(cont, Tail(values), m).bind(^MonadicValue(List* ys, Class _) {
-            return [m unit](flag? Cons(x, ys): ys);
+            return [[m unit] :(flag? Cons(x, ys): ys)];
         });
     });
 }
 
-MonadicValue ForM(List* values, Continuation cont, Class<Monad> m) {
+MonadicValue ForM(List* values, FunctionM* cont, Class<Monad> m) {
     return MapM(cont, values, m);
 }
 
-MonadicValue ForM_(List* values, Continuation cont, Class<Monad> m) {
+MonadicValue ForM_(List* values, FunctionM* cont, Class<Monad> m) {
     return MapM_(cont, values, m);
 }
 
@@ -105,13 +105,13 @@ MonadicValue MSum(List* mvalues, Class<MonadPlus> m) {
     return FoldR([m mplus], [m mzero], mvalues);
 }
 
-Continuation MComposeL(Continuation contAB, Continuation contBC, Class<Monad> m) {
-    return ^MonadicValue(id value, Class m) {
-        return contAB(value, m).bind(contBC);
-    };
+FunctionM* MComposeL(FunctionM* contAB, FunctionM* contBC, Class<Monad> m) {
+    return [Function fromBlock:^MonadicValue(id value, Class m1) {
+        return ((MonadicValue)[[contAB :value] :m]).bind(contBC);
+    }];
 }
 
-Continuation MComposeR(Continuation contBC, Continuation contAB, Class<Monad> m) {
+FunctionM* MComposeR(FunctionM* contBC, FunctionM* contAB, Class<Monad> m) {
     return MComposeL(contAB, contBC, m);
 }
 
@@ -122,9 +122,9 @@ MonadicValue Forever(MonadicValue mvalue) {
 }
 
 id<Functor> Void(id<Functor> ftor) {
-    return ftor.fmap(^id(id x) {
+    return ftor.fmap([Function fromBlock:^id(id x) {
         return MkUnit();
-    });
+    }]);
 }
 
 
@@ -134,32 +134,32 @@ MonadicValue Join(MonadicValue mmvalue) {
     });
 }
 
-MonadicValue MapAndUnzipM(Continuation cont, List* values, Class<Monad> m) {
+MonadicValue MapAndUnzipM(FunctionM* cont, List* values, Class<Monad> m) {
     return MapM(cont, values, m).bind(^MonadicValue(id value, Class m1) {
-        return [m unit](Unzip(value));
+        return [[m unit] :Unzip(value)];
     });
 }
 
-MonadicValue ZipWithM(MonadicValue(^zipper)(id, id), List* as, List* bs, Class<Monad> m) {
+MonadicValue ZipWithM(Function* zipper, List* as, List* bs, Class<Monad> m) {
     return Sequence(ZipWith(zipper, as, bs), m);
 }
 
-MonadicValue ZipWithM_(MonadicValue(^zipper)(id, id), List* as, List* bs, Class<Monad> m) {
+MonadicValue ZipWithM_(Function* zipper, List* as, List* bs, Class<Monad> m) {
     return Sequence_(ZipWith(zipper, as, bs), m);
 }
 
-MonadicValue FoldM(MReduceStepL step, id zero, List* values, Class<Monad> m) {
+MonadicValue FoldM(Function* step, id zero, List* values, Class<Monad> m) {
     if (IsEmpty(values)) {
-        return [m unit](zero);
+        return [[m unit] :zero];
     }
     
-    return step(zero, Head(values)).bind(^MonadicValue(id value, Class m1) {
+    return ((MonadicValue)[[step :zero] :Head(values)]).bind(^MonadicValue(id value, Class m1) {
         return FoldM(step, value, Tail(values), m);
     });
 }
 
-MonadicValue FoldM_(MReduceStepL step, id zero, List* values, Class<Monad> m) {
-    return FoldM(step, zero, values, m).bind_([m unit](MkUnit()));
+MonadicValue FoldM_(Function* step, id zero, List* values, Class<Monad> m) {
+    return FoldM(step, zero, values, m).bind_([[m unit] :MkUnit()]);
 }
 
 MonadicValue ReplicateM(int count, MonadicValue mvalue, Class<Monad> m) {
@@ -171,28 +171,28 @@ MonadicValue ReplicateM_(int count, MonadicValue mvalue, Class<Monad> m) {
 }
 
 MonadicValue When(BOOL cond, MonadicValue mvalue, Class<Monad> m) {
-    return cond? mvalue: [m unit](MkUnit());
+    return cond? mvalue: [[m unit] :MkUnit()];
 }
 
 MonadicValue Unless(BOOL cond, MonadicValue mvalue, Class<Monad> m) {
-    return cond? [m unit](MkUnit()): mvalue;
+    return cond? [[m unit] :MkUnit()]: mvalue;
 }
 
-MonadicValue LiftM(id(^func)(id), MonadicValue mvalue, Class<Monad> m) {
+MonadicValue LiftM(Function* func, MonadicValue mvalue, Class<Monad> m) {
     return mvalue.bind(^MonadicValue(id value, Class m1) {
-        return [m unit](func(value));
+        return [[m unit] :[func :value]];
     });
 }
 
-MonadicValue LiftM2(id(^func)(id, id), MonadicValue mvalue1, MonadicValue mvalue2, Class<Monad> m) {
+MonadicValue LiftM2(Function* func, MonadicValue mvalue1, MonadicValue mvalue2, Class<Monad> m) {
     return mvalue1.bind(^MonadicValue(id value1, Class m1) {
         return mvalue2.bind(^MonadicValue(id value2, Class m2) {
-            return [m unit](func(value1, value2));
+            return [[m unit] :[[func :value1] :value2]];
         });
     });
 }
 
-MonadicValue LiftM3(id(^func)(id, id, id),
+MonadicValue LiftM3(Function* func,
                     MonadicValue mvalue1,
                     MonadicValue mvalue2,
                     MonadicValue mvalue3,
@@ -200,13 +200,13 @@ MonadicValue LiftM3(id(^func)(id, id, id),
     return mvalue1.bind(^MonadicValue(id value1, Class m1) {
         return mvalue2.bind(^MonadicValue(id value2, Class m2) {
             return mvalue3.bind(^MonadicValue(id value3, Class m3) {
-                return [m unit](func(value1, value2, value3));
+                return [[m unit] :[[[func :value1] :value2] :value3]];
             });
         });
     });
 }
 
-MonadicValue LiftM4(id(^func)(id, id, id, id),
+MonadicValue LiftM4(Function* func,
                     MonadicValue mvalue1,
                     MonadicValue mvalue2,
                     MonadicValue mvalue3,
@@ -216,14 +216,14 @@ MonadicValue LiftM4(id(^func)(id, id, id, id),
         return mvalue2.bind(^MonadicValue(id value2, Class m2) {
             return mvalue3.bind(^MonadicValue(id value3, Class m3) {
                 return mvalue4.bind(^MonadicValue(id value4, Class m4) {
-                    return [m unit](func(value1, value2, value3, value4));
+                    return [[m unit] :[[[[func :value1] :value2] :value3] :value4]];
                 });
             });
         });
     });
 }
 
-MonadicValue LiftM5(id(^func)(id, id, id, id, id),
+MonadicValue LiftM5(Function* func,
                     MonadicValue mvalue1,
                     MonadicValue mvalue2,
                     MonadicValue mvalue3,
@@ -235,7 +235,7 @@ MonadicValue LiftM5(id(^func)(id, id, id, id, id),
             return mvalue3.bind(^MonadicValue(id value3, Class m3) {
                 return mvalue4.bind(^MonadicValue(id value4, Class m4) {
                     return mvalue5.bind(^MonadicValue(id value5, Class m5) {
-                        return [m unit](func(value1, value2, value3, value4, value5));
+                        return [[m unit] :[[[[[func :value1] :value2] :value3] :value4] :value5]];
                     });
                 });
             });
@@ -244,17 +244,17 @@ MonadicValue LiftM5(id(^func)(id, id, id, id, id),
 }
 
 MonadicValue Ap(MonadicValue mfunc, MonadicValue mvalue, Class<Monad> m) {
-    return mfunc.bind(^MonadicValue(id(^func)(id), Class m1) {
+    return mfunc.bind(^MonadicValue(Function* func, Class m1) {
         return mvalue.bind(^MonadicValue(id value, Class m2) {
-            return [m unit](func(value));
+            return [[m unit] :[func :value]];
         });
     });
 }
 
 
-MonadicValue MFilter(BOOL(^pred)(id), MonadicValue mvalue, Class<MonadPlus> m) {
+MonadicValue MFilter(Function* pred, MonadicValue mvalue, Class<MonadPlus> m) {
     return mvalue.bind(^MonadicValue(id value, Class m1) {
-        return pred(value)? [m unit](value): [m mzero];
+        return [[pred :value] boolValue]? [[m unit] :value]: [m mzero];
     });
 }
 

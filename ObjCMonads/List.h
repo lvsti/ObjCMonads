@@ -12,9 +12,6 @@
 #import "Monoid.h"
 #import "Tuple.h"
 
-typedef id(^ReduceStepL)(id accum, id obj);
-typedef id(^ReduceStepR)(id obj, id accum);
-
 
 @interface List : NSObject<Monad, Functor, Monoid, NSCopying>
 
@@ -33,11 +30,11 @@ extern "C" {
     List* Tail(List* list);
     int Length(List* list);
     List* Drop(int count, List* list);
-    id FoldL(ReduceStepL step, id zero, List* list);
-    id FoldR(ReduceStepR step, id zero, List* list);
+    id FoldL(Function* step, id zero, List* list);
+    id FoldR(Function* step, id zero, List* list);
     List* Append(List* list1, List* list2);
     List* Concat(List* list);
-    List* Map(Mapping mapping, List* list);
+    List* Map(Function* func, List* list);
     List* Replicate(int count, id item);
     BOOL Elem(id value, List* list);
     BOOL IsEmpty(List* list);
@@ -46,7 +43,7 @@ extern "C" {
     Tuple* Unzip(List* tuples);
     
     // zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
-    List* ZipWith(id(^zipper)(id, id), List* as, List* bs);
+    List* ZipWith(Function* zipper, List* as, List* bs);
     
     
 

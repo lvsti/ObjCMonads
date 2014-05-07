@@ -9,6 +9,8 @@
 #import "Pierre.h"
 #import "Maybe.h"
 #import "Tuple.h"
+#import "ObjCObject+Monad.h"
+
 
 
 @interface Pole : NSObject
@@ -32,28 +34,28 @@ Pole* EmptyPole() {
 }
 
 
-Continuation LandLeft(int birds) {
-    return ^MonadicValue(Pole* pole, Class m) {
+FunctionM* LandLeft(int birds) {
+    return [Function fromBlock:^MonadicValue(Pole* pole, Class m) {
         int newLeft = pole.left + birds;
         int right = pole.right;
         
         return abs(newLeft - right) < 4? Just(MkPole(newLeft, right)): Nothing();
-    };
+    }];
 }
 
-Continuation LandRight(int birds) {
-    return ^MonadicValue(Pole* pole, Class m) {
+FunctionM* LandRight(int birds) {
+    return [Function fromBlock:^MonadicValue(Pole* pole, Class m) {
         int left = pole.left;
         int newRight = pole.right + birds;
 
         return abs(left - newRight) < 4? Just(MkPole(left, newRight)): Nothing();
-    };
+    }];
 }
 
-Continuation Banana() {
-    return ^MonadicValue(id value, Class m) {
+FunctionM* Banana() {
+    return [Function fromBlock:^MonadicValue(id value, Class m) {
         return Nothing();
-    };
+    }];
 }
 
 
@@ -75,20 +77,6 @@ void Pierre1() {
 
 // -----------------------------------------------------------------------------
 
-
-
-#import "metamacros.h"
-
-#define metamacro_argcount0(...) metamacro_if_eq( metamacro_argcount(__VA_ARGS__), metamacro_argcount( foo, ## __VA_ARGS__) )( metamacro_dec(metamacro_argcount(__VA_ARGS__)) )(metamacro_argcount(__VA_ARGS__))
-
-#define MCONT_SEP(...) metamacro_if_eq(0, metamacro_argcount0(__VA_ARGS__))()(,)
-#define MCONT(fname, ...) \
-    ^MonadicValue(id value, Class m) { \
-        return (MonadicValue)fname( \
-            __VA_ARGS__ \
-            MCONT_SEP(__VA_ARGS__) \
-            value ); \
-    }
 
 #define OF(...)
 
@@ -133,9 +121,9 @@ void Pierre2a() {
 
 
 #define MCONT_BEGIN(monad, type, fname, ...) \
-    Continuation fname(__VA_ARGS__) { \
-        return ^MonadicValue(type value, Class m )
-#define MCONT_END ; }
+    Function* fname(__VA_ARGS__) { \
+        return [Function fromBlock:^MonadicValue(type value, Class m )
+#define MCONT_END ]; }
 
 
 MCONT_BEGIN(Maybe*, Pole*, __LandLeft, int birds) {
@@ -183,8 +171,6 @@ void Pierre2b() {
 // -----------------------------------------------------------------------------
 
 
-
-#import "ObjCObject+Monad.h"
 
 
 

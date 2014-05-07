@@ -31,7 +31,7 @@ List OF(KnightPos)* MoveKnight(KnightPos pos) {
             int r1 = [Snd(pos1) intValue];
             return
                 MBEGIN(Guard(c1 >= 1 && c1 <= 8 && r1 >= 1 && r1 <= 8, m)) >
-                [m unit](pos1)
+                [[m unit] :pos1]
                 MEND;
         }
         MEND;
@@ -55,9 +55,10 @@ List OF(KnightPos)* InNMoves(int n, KnightPos startPos) {
     return
         MBEGIN(Singleton(startPos)) >=
         ^MonadicValue(id value, Class m) {
-            Continuation cont = FoldR(^id(id obj, id accum) {
+            Function* step = [Function fromBlock:^id(id obj, id accum) {
                 return MComposeR(obj, accum, m);
-            }, [m unit], Replicate(n, MCONT(MoveKnight)));
+            }];
+            Continuation cont = FoldR(step, [m unit], Replicate(n, MCONT(MoveKnight)));
 
             return cont(value, m);
         }

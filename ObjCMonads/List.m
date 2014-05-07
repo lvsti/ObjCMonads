@@ -58,19 +58,19 @@ List* Drop(int count, List* list) {
     return [[List alloc] initWithFArray:subarray];
 }
 
-id FoldL(ReduceStepL step, id zero, List* list) {
+id FoldL(Function* step, id zero, List* list) {
     __block id accumulator = zero;
     [list.array enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        accumulator = step(accumulator, obj);
+        accumulator = [step :accumulator :obj];
     }];
     
     return accumulator;
 }
 
-id FoldR(ReduceStepR step, id zero, List* list) {
+id FoldR(Function* step, id zero, List* list) {
     __block id accumulator = zero;
     [list.array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        accumulator = step(obj, accumulator);
+        accumulator = [step :obj :accumulator];
     }];
     
     return accumulator;
@@ -91,10 +91,10 @@ List* Concat(List* list) {
     return [[List alloc] initWithFArray:newArray];
 }
 
-List* Map(Mapping mapping, List* list) {
+List* Map(Function* func, List* list) {
     NSMutableArray* newArray = [NSMutableArray arrayWithCapacity:[list.array count]];
     [list.array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [newArray addObject:mapping(obj)];
+        [newArray addObject:[func :obj]];
     }];
     return [[List alloc] initWithFArray:newArray];
 }
@@ -122,12 +122,12 @@ Tuple* Unzip(List* tuples) {
     }, MkPair(Empty(), Empty()), tuples);
 }
 
-List* ZipWith(id(^zipper)(id, id), List* as, List* bs) {
+List* ZipWith(Function* zipper, List* as, List* bs) {
     if (IsEmpty(as) || IsEmpty(bs)) {
         return Empty();
     }
     
-    return Cons(zipper(Head(as), Head(bs)), ZipWith(zipper, Tail(as), Tail(bs)));
+    return Cons([zipper :Head(as) :Head(bs)], ZipWith(zipper, Tail(as), Tail(bs)));
 }
 
 
@@ -196,11 +196,9 @@ List* ZipWith(id(^zipper)(id, id), List* as, List* bs) {
 #pragma mark - Monad:
 
 + (Function*)bind {
-    return [Function fromBlock:^List*(List* mvalue, Function* cont) {
-        Mapping m = ^id(id value) {
-            return cont(value, self);
-        };
-        return Concat(Map(m, mvalue));
+    return [Function fromBlock:^List*(List* mvalue, FunctionM* cont) {
+        Function* mapping = ^id(id value) { return [cont :value :self]; };
+        return Concat(Map([Function fromBlock:mapping], mvalue));
     }];
 }
 

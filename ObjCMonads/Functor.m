@@ -24,7 +24,7 @@
     @weakify(self);
     return ^id<Functor>(Function* f) {
         @strongify(self);
-        return [[[[self class] fmap] :f] :self];
+        return [[[self class] fmap] :f :self];
     };
 }
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E81354FB19040DFC004F376D /* Data.Function.m in Resources */ = {isa = PBXBuildFile; fileRef = E81354FA19040DFC004F376D /* Data.Function.m */; };
 		E816ED6718F04B9C00481229 /* CppMonad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6518F04B9C00481229 /* CppMonad.cpp */; };
 		E816ED6B18F05D8500481229 /* Maybe.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6A18F05D8500481229 /* Maybe.m */; };
 		E816ED6E18F05F9F00481229 /* Either.m in Sources */ = {isa = PBXBuildFile; fileRef = E816ED6D18F05F9F00481229 /* Either.m */; };
@@ -26,6 +25,7 @@
 		E83CDB6718F1BB8200FB7004 /* EXTConcreteProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5118F1BB8200FB7004 /* EXTConcreteProtocol.m */; };
 		E83CDB6918F1BB8200FB7004 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5918F1BB8200FB7004 /* EXTRuntimeExtensions.m */; };
 		E83CDB6B18F1BB8200FB7004 /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = E83CDB5D18F1BB8200FB7004 /* EXTScope.m */; };
+		E851A3AD191AE5BA0076A5F1 /* Data.Function.m in Sources */ = {isa = PBXBuildFile; fileRef = E81354FA19040DFC004F376D /* Data.Function.m */; };
 		E86B6541190EF35800F7916E /* MABlockForwarding.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B653E190EF35800F7916E /* MABlockForwarding.m */; };
 		E86B65B51910520700F7916E /* BlockFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B65AA1910520700F7916E /* BlockFunction.m */; };
 		E86B65B61910520700F7916E /* Function.m in Sources */ = {isa = PBXBuildFile; fileRef = E86B65AC1910520700F7916E /* Function.m */; };
@@ -457,7 +457,6 @@
 				E8E18E0E18EDF765009E0ECE /* InfoPlist.strings in Resources */,
 				E8E18E1C18EDF765009E0ECE /* Images.xcassets in Resources */,
 				E8E18E1A18EDF765009E0ECE /* MainMenu.xib in Resources */,
-				E81354FB19040DFC004F376D /* Data.Function.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +493,7 @@
 				E83CDB6718F1BB8200FB7004 /* EXTConcreteProtocol.m in Sources */,
 				E816ED7118F061D700481229 /* State.m in Sources */,
 				E86B65B51910520700F7916E /* BlockFunction.m in Sources */,
+				E851A3AD191AE5BA0076A5F1 /* Data.Function.m in Sources */,
 				E8B6E99418F337CE0026B4ED /* ObjCObject+Monoid.mm in Sources */,
 				E83CDB3F18F1781900FB7004 /* Writer.m in Sources */,
 				E816ED7418F062EB00481229 /* Tuple.m in Sources */,

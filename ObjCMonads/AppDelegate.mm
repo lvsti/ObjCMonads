@@ -112,7 +112,7 @@ Writer* multWithLog() {
                     Just(@3) >=
                     ^MonadicValue(id value, Class m) {
                         NSLog(@"value = %@", value);
-                        return [m unit](value);
+                        return [[m unit] :value];
                     } >=
                     dec(1);
     

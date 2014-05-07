@@ -31,6 +31,14 @@
 + (id)nullArg;
 
 - (id):(id)arg;
+- (id):(id)arg1 :(id)arg2;
+- (id):(id)arg1 :(id)arg2 :(id)arg3;
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4;
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 :(id)arg5;
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 :(id)arg5 :(id)arg6;
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 :(id)arg5 :(id)arg6 :(id)arg7;
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 :(id)arg5 :(id)arg6 :(id)arg7 :(id)arg8;
+
 - (id)invoke;
 
 @end

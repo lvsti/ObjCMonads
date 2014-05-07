@@ -11,6 +11,8 @@
 #import "MethodFunction.h"
 #import "PointerFunction.h"
 
+#define NULLABLE(arg)   ((arg)? (arg): [Function nullArg])
+
 
 static id sharedNull = nil;
 
@@ -33,6 +35,8 @@ static id sharedNull = nil;
 @interface Function ()
 
 @property (nonatomic, copy, readwrite) NSArray* args;
+
+- (id)apply:(NSArray*)newArgs;
 
 @end
 
@@ -72,12 +76,79 @@ static id sharedNull = nil;
 }
 
 - (id):(id)arg {
-    assert([_args count] < _argCount);
+    NSArray* newArgs = @[NULLABLE(arg)];
+    return [self apply:newArgs];
+}
 
-    id obj = arg? arg: [Function nullArg];
+- (id):(id)arg1 :(id)arg2 {
+    NSArray* newArgs = @[NULLABLE(arg1),
+                         NULLABLE(arg2)];
+    return [self apply:newArgs];
+}
+
+- (id):(id)arg1 :(id)arg2 :(id)arg3 {
+    NSArray* newArgs = @[NULLABLE(arg1),
+                         NULLABLE(arg2),
+                         NULLABLE(arg3)];
+    return [self apply:newArgs];
+}
+
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 {
+    NSArray* newArgs = @[NULLABLE(arg1),
+                         NULLABLE(arg2),
+                         NULLABLE(arg3),
+                         NULLABLE(arg4)];
+    return [self apply:newArgs];
+}
+
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 :(id)arg5 {
+    NSArray* newArgs = @[NULLABLE(arg1),
+                         NULLABLE(arg2),
+                         NULLABLE(arg3),
+                         NULLABLE(arg4),
+                         NULLABLE(arg5)];
+    return [self apply:newArgs];
+}
+
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 :(id)arg5 :(id)arg6 {
+    NSArray* newArgs = @[NULLABLE(arg1),
+                         NULLABLE(arg2),
+                         NULLABLE(arg3),
+                         NULLABLE(arg4),
+                         NULLABLE(arg5),
+                         NULLABLE(arg6)];
+    return [self apply:newArgs];
+}
+
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 :(id)arg5 :(id)arg6 :(id)arg7 {
+    NSArray* newArgs = @[NULLABLE(arg1),
+                         NULLABLE(arg2),
+                         NULLABLE(arg3),
+                         NULLABLE(arg4),
+                         NULLABLE(arg5),
+                         NULLABLE(arg6),
+                         NULLABLE(arg7)];
+    return [self apply:newArgs];
+}
+
+- (id):(id)arg1 :(id)arg2 :(id)arg3 :(id)arg4 :(id)arg5 :(id)arg6 :(id)arg7 :(id)arg8 {
+    NSArray* newArgs = @[NULLABLE(arg1),
+                         NULLABLE(arg2),
+                         NULLABLE(arg3),
+                         NULLABLE(arg4),
+                         NULLABLE(arg5),
+                         NULLABLE(arg6),
+                         NULLABLE(arg7),
+                         NULLABLE(arg8)];
+    return [self apply:newArgs];
+}
+
+- (id)apply:(NSArray*)newArgs {
+    assert([_args count] + [newArgs count] <= _argCount);
+    
     Function* f = [self copy];
-    f.args = _args? [_args arrayByAddingObject:obj]: @[obj];
-
+    f.args = _args? [_args arrayByAddingObjectsFromArray:newArgs]: newArgs;
+    
     if ([f.args count] == _argCount) {
         return [f invoke];
     }

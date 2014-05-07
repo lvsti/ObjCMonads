@@ -7,6 +7,7 @@
 //
 
 #import "BlockFunction.h"
+#import "EXTScope.h"
 #import "MABlockForwarding.h"
 #import "NSInvocation+Extensions.h"
 #import "NSInvocation+Function.h"
@@ -46,7 +47,9 @@
     NSMethodSignature* ms = SignatureForBlock(_block);
     __block id retval = nil;
     
+    @weakify(self);
     BlockInterposer invWrapper = ^(NSInvocation *inv, void (^call)()) {
+        @strongify(self);
         [inv setArgumentsWithArray:self.args
                    startingAtIndex:1
                     usingSignature:ms];
@@ -57,7 +60,7 @@
         retval = [inv returnedObjectWithObjCType:retType];
     };
     
-    id (^wrapper)() = MAForwardingBlock(invWrapper, _block);
+    void (^wrapper)() = MAForwardingBlock(invWrapper, _block);
     wrapper();
     
     return retval;

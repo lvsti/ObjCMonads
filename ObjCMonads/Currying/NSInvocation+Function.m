@@ -33,7 +33,11 @@
         } else {
             // it's not NSObject, assuming an NSValue of the same kind
             assert([obj isKindOfClass:[NSValue class]]);
-            assert(!strcmp([obj objCType], argType));
+
+            // don't require strict type equivalence for NSNumbers
+            if (![obj isKindOfClass:[NSNumber class]]) {
+                assert(!strcmp([obj objCType], argType));
+            }
             
             NSUInteger size = 0;
             NSGetSizeAndAlignment(argType, &size, NULL);

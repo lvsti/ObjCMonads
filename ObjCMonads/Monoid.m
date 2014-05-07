@@ -12,30 +12,27 @@
 
 @concreteprotocol(Monoid)
 
-+ (id<Monoid>(^)())mempty {
++ (id<Monoid>)mempty {
     assert(NO);
     return nil;
 }
 
-+ (id<Monoid>(^)(id<Monoid>, id<Monoid>))mappend {
++ (Function*)mappend {
     assert(NO);
     return nil;
 }
 
-+ (id<Monoid>(^)(List*))mconcat {
-    return ^id<Monoid>(List* list) {
-        ReduceStepR step = ^id(id obj, id accum) {
-            return [self mappend](obj, accum);
-        };
-        return FoldR(step, [self mempty], list);
-    };
++ (Function*)mconcat {
+    return [Function fromBlock:^id<Monoid>(List* list) {
+        return FoldR([self mappend], [self mempty], list);
+    }];
 }
 
 - (id<Monoid>(^)(id<Monoid>))mappend {
     @weakify(self);
     return ^id<Monoid>(id<Monoid> other) {
         @strongify(self);
-        return [[self class] mappend](self, other);
+        return [[[self class] mappend] :self :other];
     };
 }
 

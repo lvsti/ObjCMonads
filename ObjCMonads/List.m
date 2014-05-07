@@ -169,22 +169,20 @@ List* ZipWith(id(^zipper)(id, id), List* as, List* bs) {
 
 #pragma mark - Monoid:
 
-+ (id<Monoid>(^)())mempty {
-    return ^List*() {
-        return Empty();
-    };
++ (id<Monoid>)mempty {
+    return Empty();
 }
 
-+ (id<Monoid>(^)(id<Monoid>, id<Monoid>))mappend {
-    return ^List*(List* list1, List* list2) {
++ (Function*)mappend {
+    return [Function fromBlock:^List*(List* list1, List* list2) {
         return Append(list1, list2);
-    };
+    }];
 }
 
-+ (id<Monoid>(^)(List*))mconcat {
-    return ^List*(List* list) {
++ (Function*)mconcat {
+    return [Function fromBlock:^List*(List* list) {
         return Concat(list);
-    };
+    }];
 }
 
 #pragma mark - Functor:

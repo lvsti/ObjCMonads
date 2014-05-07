@@ -8,18 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import "EXTConcreteProtocol.h"
+#import "Data.Function.h"
 
 @class List;
 
 @protocol Monoid <NSObject>
 @required
 
-+ (id<Monoid>(^)())mempty;
-+ (id<Monoid>(^)(id<Monoid>, id<Monoid>))mappend;
+// mempty :: Monoid a => a
++ (id<Monoid>)mempty;
+
+// mappend :: Monoid a => a -> a -> a
++ (Function*)mappend;
 
 @concrete
 
-+ (id<Monoid>(^)(List*))mconcat;
+// mconcat :: Monoid a => [a] -> a
++ (Function*)mconcat;
 
 @property (nonatomic, readonly) id<Monoid>(^mappend)(id<Monoid>);
 

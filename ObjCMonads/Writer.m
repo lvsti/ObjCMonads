@@ -117,7 +117,7 @@ Writer* Censor(OutputModifier mod, Writer* m) {
         Record rec0 = RunWriter(mvalue);
         Record rec1 = RunWriter([[cont :rec0[0]] :self]);
         Class monoidClass = [rec0[1] class];
-        Output jointOutput = [monoidClass mappend](rec0[1], rec1[1]);
+        Output jointOutput = [[monoidClass mappend] :rec0[1] :rec1[1]];
         return MkWriter(MkRecord(rec1[0], jointOutput));
     }];
 }
@@ -125,7 +125,7 @@ Writer* Censor(OutputModifier mod, Writer* m) {
 + (Function*)unit {
     Class class = [self outputClass];
     return [Function fromBlock:^Writer*(id value) {
-        return MkWriter(MkRecord(value, [class mempty]()));
+        return MkWriter(MkRecord(value, [class mempty]));
     }];
 }
 

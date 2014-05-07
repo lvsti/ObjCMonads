@@ -10,6 +10,6 @@
 
 
 ObjCObject operator+(const ObjCObject& mon1, const ObjCObject& mon2) {
-    return [[mon1._object class] mappend](mon1._object, mon2._object);
+    return [[[mon1._object class] mappend] :mon1._object :mon2._object];
 }
 

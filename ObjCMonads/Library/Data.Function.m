@@ -23,4 +23,17 @@ Function* ComposeR(Function* fBC, Function* fAB) {
     }];
 }
 
+id Flip(Function* func, id b, id a) {
+    return [func :a :b];
+}
+
+id Until(Function* pred, Function* func, id a) {
+    id value = a;
+    while (![[pred :value] boolValue]) {
+        value = [func :value];
+    }
+    
+    return value;
+}
+
 

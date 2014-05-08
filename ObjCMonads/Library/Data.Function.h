@@ -22,7 +22,13 @@ extern "C" {
     
     // (.) :: (b -> c) -> (a -> b) -> (a -> c)
     Function* ComposeR(Function* fBC, Function* fAB);
+    
+    // flip :: (a -> b -> c) -> b -> a -> c
+    id Flip(Function* func, id b, id a);
 
+    // until :: (a -> Bool) -> (a -> a) -> a -> a
+    id Until(Function* pred, Function* func, id a);
+    
 #ifdef __cplusplus
 }
 #endif
